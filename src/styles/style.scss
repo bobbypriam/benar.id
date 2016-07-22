@@ -10,24 +10,34 @@ body {
 }
 
 .siteHeader {
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: #aa3939;
+  color: #eee;
+
+  .logo {
+    color: #eee;
+    font-size: 16px;
+    margin: 6px 0;
+  }
 }
 
-.logo {
-  font-size: 22px;
-  margin: 0;
-}
+.nav {
+  text-align: right;
 
-.nav { text-align: right; }
+  ul {
+    margin: 6px 0;
 
-.nav li {
-  display: inline;
-  line-height: 1.5;
-  margin-left: 25px;
-}
-.nav li:first-of-type {
-  margin-left: 0;
+    li {
+      display: inline;
+      margin-left: 25px;
+
+      a {
+        color: #eee;
+      }
+    }
+    li:first-of-type {
+      margin-left: 0;
+    }
+  }
 }
 
 .masthead {
@@ -36,36 +46,84 @@ body {
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.8)
     ), url(http://bgfons.com/upload/newspaper_texture2847.jpg);
-  color: #fff;
+  color: #eee;
   padding: 50px 0;
 
   .mainSearch {
+    display: inline-block;
+    width: 80%;
+
     input {
-      background-color: #fff;
-      color: #000;
+      width: 100%;
+      color: #eee;
+      border-radius: 0;
+      border-color: getColor('base', 'primary');
+
+      &:focus {
+        background: rgba(255, 255, 255, .1)
+      }
     }
+
+    ::-webkit-input-placeholder {
+       color: getColor('state', 'muted');
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: getColor('state', 'muted');
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: getColor('state', 'muted');
+    }
+
+    :-ms-input-placeholder {
+       color: getColor('state', 'muted');
+    }
+  }
+  .mainSearchButton {
+    height: 32px;
+    width: 32px;
+    padding: 10px;
+    line-height: 0;
+    margin-left: -4px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid getColor('base', 'primary');
+    border-left: 0;
   }
 }
 @media (min-width: 48em) {
   .masthead {
-    padding: 100px 0;
+    padding: 50px 0 30px;
 
     .mainSearch {
-
+      margin-right: 48px;
+      max-width: 600px;
       input {
-        max-width: 400px;
+        height: 48px;
+        font-size: 1.5em;
       }
     }
+    .mainSearchButton {
+      height: 48px;
+      width: 48px;
+      margin-left: -52px;
+      padding: 10px;
+    }
   }
+}
+.searchIcon {
+  stroke: #eee;
+  fill: none;
 }
 
 .masthead-title {
   margin-top: 0;
-  color: #fff;
+  color: #eee;
 }
 
 .siteContent {
-  background: #fff;
+  background: #eee;
   padding: 0 0 20px 0;
   box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
 }

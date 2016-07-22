@@ -12,9 +12,9 @@
   <header class="siteHeader">
     <div container>
       <div row>
-        <h1 column="4" class="logo">NewsReview</h1>
+        <h1 column=4 class="logo">NewsReview</h1>
 
-        <nav column="8" class="nav">
+        <nav column=8 class="nav">
           <ul>
             <li><a href="">Cari Berita</a></li>
             <li><a href="">Ulasan</a></li>
@@ -34,9 +34,15 @@
       <p>Masukkan judul atau link menuju berita:</p>
 
       <form class="text--center">
-        <p class="mainSearch">
+        <div class="mainSearch">
           <input class="input--flat" type="text" placeholder="http://news.detik.com/berita/3258755/wagub-djarot-penuhi-panggilan-bareskrim-soal-kasus-lahan-cengkareng?_ga=1.258322447.421029061.1457685142">
-        </p>
+        </div>
+        <button class="mainSearchButton button button--flat" type="submit">
+          <svg viewBox="0 0 34 34" class="searchIcon">
+            <ellipse stroke-width="3" cx="16" cy="15" rx="12" ry="12"></ellipse>
+            <path d="M26 26 l 8 8" stroke-width="3" stroke-linecap="square"></path>
+          </svg>
+        </button>
       </form>
     </div>
   </div>
