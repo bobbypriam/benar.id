@@ -6,59 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <title>NewsReview - Empty</title>
+  <title>{{title}}</title>
 </head>
 <body>
   <header class="siteHeader">
     <div container>
       <div row>
-        <h1 column=4 class="logo">NewsReview</h1>
+        <h1 column=4 class="logo"><a href="/">NewsReview</a></h1>
 
         <nav column=8 class="nav">
           <ul>
-            <li><a href="">Cari Berita</a></li>
-            <li><a href="">Ulasan</a></li>
-            <li><a href="">Media</a></li>
-            <li><a href="">Tentang Kami</a></li>
-            <li class="nav-button"><a href="">Gabung</a></li>
+            <li><a href="/berita">Cari Berita</a></li>
+            <li><a href="/media">Media</a></li>
+            <li><a href="/tentang">Tentang Kami</a></li>
+            <li class="nav-button"><a href="/gabung">Gabung</a></li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
 
-  <div class="masthead--normal">
-    <div container>
-      <h2 class="masthead-title">Judul</h2>
-    </div>
-  </div>
-
-  <div class="breadcrumbsWrapper">
-    <div container>
-      <div row>
-        <div column=12>
-          <ul class="breadcrumbs breadcrumbs--flat">
-            <li><a href="">Beranda</a></li>
-            <li class="is-active"><a href="#">Judul</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <main class="siteContent">
-    <div container>
-      <div row>
-        <div column=8>
-          <h4>Main</h4>
-        </div>
-
-        <div column=4>
-          <h4>Sidebar</h4>
-        </div>
-      </div>
-    </div>
-  </main>
+  {{{ content }}}
 
   <footer class="siteFooter">
     <div container>
@@ -123,6 +91,6 @@
     </div>
   </footer>
 
-  <script type="text/javascript" src="dist/bundle.js" charset="utf-8"></script>
+  <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
 </body>
 </html>
