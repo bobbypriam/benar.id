@@ -132,7 +132,7 @@
 
 .siteContent {
   background: getColor(background, light);
-  padding: 0 0 20px 0;
+  padding: 20px 0;
   box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
 }
 .siteFooter {
@@ -160,50 +160,79 @@
   &--review {
     @extend .card;
 
-    .card-news,
-    .card-excerpt,
-    .card-footer {
+    .card-excerpt {
       padding: 0;
       min-height: 32px;
+
+      .author {
+        font-weight: bold;
+      }
+
+      .content {
+        margin-left: 48px;
+      }
     }
 
     .card-news {
-      border-top: 1px solid getColor(base, lines);
+      border-bottom: 1px solid getColor(base, lines);
+    }
+  }
 
-      .card-news-image,
-      .card-news-description {
-        display: inline-block;
-      }
+  .card-excerpt {
+    padding: 6px;
+  }
 
-      .card-news-image {
-        width: 50px;
-        height: 50px;
-        border-radius: 100%;
-      }
+  .card-news {
+    padding: 0;
+    min-height: 32px;
+    // border-top: 1px solid getColor(base, lines);
 
-      .card-news-description {
-        width: calc(100% - 54px);
-      }
-
-      h1 {
-        display: inline-block;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 100%;
-        font-size: 1rem;
-        margin: 0;
-      }
+    .card-news-image,
+    .card-news-description {
+      display: inline-block;
     }
 
-    .card-news-description,
-    .card-excerpt,
-    .card-footer {
+    .card-news-description {
       padding: 6px;
     }
 
-    .card-footer {
-      font-size: .875rem;
+    .card-news-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+
+    .card-news-description {
+      width: calc(100% - 55px);
+    }
+
+    .card-news-description p {
+      margin: 0;
+    }
+
+    .card-news-description-title {
+      display: inline-block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  .card-footer {
+    padding: 6px;
+    font-size: .875rem;
+    min-height: 32px;
+  }
+}
+
+.cardList {
+  &--news {
+    .card:not(:last-child) {
+      margin-bottom: 0;
+      border-bottom: 0;
     }
   }
 }
