@@ -1,9 +1,5 @@
 @import "~concise.css/src/concise";
 
-body {
-  background: #eaeaea none;
-}
-
 .btn {
   /*border-radius: 4px;*/
   /*transition: all .3s;*/
@@ -24,11 +20,13 @@ body {
   text-align: right;
 
   ul {
-    margin: 6px 0;
+    margin: 0;
+    padding: 0;
 
     li {
-      display: inline;
-      margin-left: 25px;
+      display: inline-block;
+      padding: 6px 10px;
+      margin-left: 10px;
 
       a {
         color: #eee;
@@ -36,6 +34,16 @@ body {
     }
     li:first-of-type {
       margin-left: 0;
+    }
+
+    .nav-button {
+      border-left: 1px solid #801616;
+      border-right: 1px solid #801616;
+      background: #eee;
+
+      a {
+        color: getColor('base', 'primary');
+      }
     }
   }
 }
