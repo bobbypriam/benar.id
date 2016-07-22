@@ -1,0 +1,11 @@
+{
+  "name": "news-review",
+  "version": "0.1.0",
+  "description": "Crowdsourced, collaborative Indonesian news rating app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
+  "license": "GPL-3.0"
+}
