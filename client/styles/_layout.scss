@@ -146,12 +146,16 @@
 
 .siteContent {
   min-height: 300px;
+  padding: 20px 0;
+
+  [row]:not(:last-child) {
+    margin-bottom: 20px;
+  }
 
   &--home {
     @extend .siteContent;
     background: getColor(background, light);
     box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
-    padding: 20px 0;
   }
 }
 

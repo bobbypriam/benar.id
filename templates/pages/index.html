@@ -18,40 +18,47 @@
   </div>
 </div>
 
-<main class="siteContent--home">
+<main class="siteContent">
   <div container>
     <div row>
-      <div column=12 class="text--center">
+      <div column="12" class="text--center">
         <h4>Ulasan Terbaru</h4>
         <p>Lihat apa yang orang-orang katakan tentang berita-berita berikut.</p>
       </div>
     </div>
     <div row>
-      <div column=6>{{> cards/review}}</div>
-      <div column=6>{{> cards/review}}</div>
-      <div column=6>{{> cards/review}}</div>
-      <div column=6>{{> cards/review}}</div>
+      <div column="8 +2">{{> list-item/review}}</div>
+      <div column="8 +2">{{> list-item/review}}</div>
+      <div column="8 +2">{{> list-item/review}}</div>
+      <div column="12" class="text--center">
+        <a>Lebih Banyak...</a>
+      </div>
     </div>
+  </div>
+</main>
+
+<div class="siteContent--home">
+  <div container>
     <div row>
-      <div column=12 class="text--center">
+      <div column="12" class="text--center">
         <h4>Rating Tertinggi</h4>
         <p>Portal berita dengan rating tertinggi saat ini.</p>
       </div>
     </div>
     <div row>
-      <div column=2>{{> cards/portal}}</div>
-      <div column=2>{{> cards/portal}}</div>
-      <div column=2>{{> cards/portal}}</div>
-      <div column=2>{{> cards/portal}}</div>
-      <div column=2>{{> cards/portal}}</div>
-      <div column=2>{{> cards/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
+      <div column="2">{{> list-item/portal}}</div>
     </div>
   </div>
-</main>
+</div>
 
 <div class="siteContent">
   <div row>
-    <div column=12 class="text--center">
+    <div column="12" class="text--center">
       <h4>Tertarik untuk bergabung?</h4>
       <p>Masukkan email anda di sini untuk masuk ke daftar penerima undangan.</p>
     </div>
@@ -61,7 +68,7 @@
 <div class="siteContent--home">
   <div container>
     <div row>
-      <div column=12 class="text--center">
+      <div column="12" class="text--center">
         <h4>Seperti dimuat pada:</h4>
       </div>
     </div>

@@ -1,3 +1,49 @@
+.review-item {
+  @extend .card;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  .review-item-header,
+  .review-item-content,
+  .review-item-footer {
+    @include clearfix();
+  }
+
+  .review-item-header {
+    .review-item-article-information {
+      width: 80%;
+      .review-item-article-information-title {
+
+      }
+    }
+
+    .review-item-rating {
+      vertical-align: baseline;
+
+      .review-item-rating-number {
+        font-size: unitSize(4);
+      }
+    }
+  }
+
+  .review-item-content {
+    .review-item-excerpt {
+      font-size: unitSize(2);
+      width: 70%;
+    }
+
+    .review-item-author {
+      border-left: 1px solid #ccc;
+      padding-left: 10px;
+    }
+  }
+
+  .review-item-footer {
+    vertical-align: baseline;
+  }
+}
+
 .card {
   // background: getColor(background, light);
 
