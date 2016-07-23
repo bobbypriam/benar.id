@@ -27,29 +27,9 @@
         <p>Lihat apa yang mereka katakan tentang berita-berita berikut.</p>
 
         <div class="cardList--review">
-          <div class="card--review">
-            <div class="card-news">
-              <div class="card-news-image" style="background-image: url(https://pesanlogo.files.wordpress.com/2012/02/logo-bar-detik1.jpg); background-size: cover; background-position: center center"></div>
-              <div class="card-news-description">
-                <h1 class="card-news-description-title">Wagub Djarot Penuhi Panggilan Bareskrim Soal Kasus Lahan Cengkareng</h1>
-                <p class="card-news-description-media">oleh Detik.com</p>
-                <p class="card-news-description-label text--right">
-                  <span class="label">Politik</span>
-                  <span class="label">Jakarta</span>
-                  <span class="label">Djarot</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="card-excerpt">
-              <div class="author"><a href="">Bobby Priambodo</a> menulis:</div>
-              <p class="content"><i>"Sudah merupakan fakta bahwa seorang pembaca akan terpengaruh oleh isi tulisan dari sebuah halaman saat ia melihat tata letaknya. Maksud penggunaan Lorem Ipsum adalah karena ia..."</i></p>
-            </div>
-
-            <div class="card-footer text--right">
-              <a href="">100 Feedbacks</a> | <a href="">Upvote</a> | <a href="">Downvote</a>
-            </div>
-          </div>
+          {{> cards/review}}
+          {{> cards/review}}
+          {{> cards/review}}
         </div>
 
         <a class="button button--sm">Learn More &raquo;</a>
@@ -60,40 +40,29 @@
 
         <p>Valid? Hoax? Ayo ikut berkontribusi dengan memberikan ulasan terhadap berita-berita ini!</p>
 
-        <div class="cardList--news">
-          <div class="card">
-            <div class="card-news">
-              <div class="card-news-image" style="background-image: url(https://pesanlogo.files.wordpress.com/2012/02/logo-bar-detik1.jpg); background-size: cover; background-position: center center"></div>
-              <div class="card-news-description">
-                <h1 class="card-news-description-title">Wagub Djarot Penuhi Panggilan Bareskrim Soal Kasus Lahan Cengkareng</h1>
-                <p class="card-news-description-media">oleh Detik.com</p>
-                <p class="card-news-description-label text--right">
-                  <span class="label">Politik</span>
-                  <span class="label">Jakarta</span>
-                  <span class="label">Djarot</span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-news">
-              <div class="card-news-image" style="background-image: url(https://pesanlogo.files.wordpress.com/2012/02/logo-bar-detik1.jpg); background-size: cover; background-position: center center"></div>
-              <div class="card-news-description">
-                <h1 class="card-news-description-title">Wagub Djarot Penuhi Panggilan Bareskrim Soal Kasus Lahan Cengkareng</h1>
-                <p class="card-news-description-media">oleh Detik.com</p>
-                <p class="card-news-description-label text--right">
-                  <span class="label">Politik</span>
-                  <span class="label">Jakarta</span>
-                  <span class="label">Djarot</span>
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="cardList--article">
+          {{> cards/article}}
+          {{> cards/article}}
+          {{> cards/article}}
         </div>
 
         <a class="button button--sm">Learn More &raquo;</a>
 
         <h4>Rating Tertinggi</h4>
+
+        <div class="cardList--portal">
+          <div row>
+            <div column=4>
+              {{> cards/portal}}
+            </div>
+            <div column=4>
+              {{> cards/portal}}
+            </div>
+            <div column=4>
+              {{> cards/portal}}
+            </div>
+          </div>
+        </div>
 
         <p>Media dengan rating tertinggi saat ini.</p>
 
