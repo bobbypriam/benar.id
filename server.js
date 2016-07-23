@@ -22,7 +22,7 @@ Glue.compose(require('./manifest'), options)
   .then(server => {
     server.views({
       engines: { html: Handlebars },
-      path: `${__dirname}/views`,
+      path: Path.resolve(__dirname, 'templates'),
       layout: true,
     });
 
@@ -33,7 +33,7 @@ Glue.compose(require('./manifest'), options)
       path: '/{param*}',
       handler: {
         directory: {
-          path: 'dist',
+          path: 'static',
         },
       },
     });

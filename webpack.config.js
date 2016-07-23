@@ -1,17 +1,19 @@
+'use strict';
+
 const path = require('path');
 
 module.exports = {
-  entry: './src/entry.js',
+  entry: './client/entry.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'static'),
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
-      }
-    ]
-  }
+        loaders: ['style', 'css', 'sass'],
+      },
+    ],
+  },
 };
