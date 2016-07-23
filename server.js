@@ -24,6 +24,7 @@ Glue.compose(require('./manifest'), options)
       engines: { html: Handlebars },
       path: Path.resolve(__dirname, 'templates'),
       layout: true,
+      isCached: false,
     });
 
     server.route(routes);
