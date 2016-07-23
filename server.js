@@ -6,14 +6,11 @@ const Path = require('path');
 const Glue = require('glue');
 const Handlebars = require('handlebars');
 
-const routes = [
-  { path: '/', view: 'index' },
-  { path: '/berita', view: 'list' },
-].map(route => ({
+const routes = require('./routes').map(route => ({
   method: 'GET',
   path: route.path,
   handler: (request, reply) => {
-    reply.view(route.view);
+    reply.view(route.view, route.context || {});
   },
 }));
 
