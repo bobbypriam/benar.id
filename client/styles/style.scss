@@ -4,5 +4,9 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 @import "layout";
 @import "lists";

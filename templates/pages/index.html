@@ -21,53 +21,49 @@
 <main class="siteContent--home">
   <div container>
     <div row>
-      <div column=6>
+      <div column=12 class="text--center">
         <h4>Ulasan Terbaru</h4>
-
-        <p>Lihat apa yang mereka katakan tentang berita-berita berikut.</p>
-
-        <div class="cardList--review">
-          {{> cards/review}}
-          {{> cards/review}}
-          {{> cards/review}}
-        </div>
-
-        <a class="button button--sm">Learn More &raquo;</a>
+        <p>Lihat apa yang orang-orang katakan tentang berita-berita berikut.</p>
       </div>
-
-      <div column=6>
-        <h4>Berita Terbaru</h4>
-
-        <p>Valid? Hoax? Ayo ikut berkontribusi dengan memberikan ulasan terhadap berita-berita ini!</p>
-
-        <div class="cardList--article">
-          {{> cards/article}}
-          {{> cards/article}}
-          {{> cards/article}}
-        </div>
-
-        <a class="button button--sm">Learn More &raquo;</a>
-
+    </div>
+    <div row>
+      <div column=6>{{> cards/review}}</div>
+      <div column=6>{{> cards/review}}</div>
+      <div column=6>{{> cards/review}}</div>
+      <div column=6>{{> cards/review}}</div>
+    </div>
+    <div row>
+      <div column=12 class="text--center">
         <h4>Rating Tertinggi</h4>
-
-        <div class="cardList--portal">
-          <div row>
-            <div column=4>
-              {{> cards/portal}}
-            </div>
-            <div column=4>
-              {{> cards/portal}}
-            </div>
-            <div column=4>
-              {{> cards/portal}}
-            </div>
-          </div>
-        </div>
-
-        <p>Media dengan rating tertinggi saat ini.</p>
-
-        <a class="button button--sm">Learn More &raquo;</a>
+        <p>Portal berita dengan rating tertinggi saat ini.</p>
       </div>
+    </div>
+    <div row>
+      <div column=2>{{> cards/portal}}</div>
+      <div column=2>{{> cards/portal}}</div>
+      <div column=2>{{> cards/portal}}</div>
+      <div column=2>{{> cards/portal}}</div>
+      <div column=2>{{> cards/portal}}</div>
+      <div column=2>{{> cards/portal}}</div>
     </div>
   </div>
 </main>
+
+<div class="siteContent">
+  <div row>
+    <div column=12 class="text--center">
+      <h4>Tertarik untuk bergabung?</h4>
+      <p>Masukkan email anda di sini untuk masuk ke daftar penerima undangan.</p>
+    </div>
+  </div>
+</div>
+
+<div class="siteContent--home">
+  <div container>
+    <div row>
+      <div column=12 class="text--center">
+        <h4>Seperti dimuat pada:</h4>
+      </div>
+    </div>
+  </div>
+</div>
