@@ -1,4 +1,4 @@
-@import "~concise.css/src/concise";
+@import "vendor/concise";
 
 * {
   box-sizing: border-box;
@@ -151,10 +151,16 @@
 }
 
 .siteContent {
-  background: getColor(background, light);
-  padding: 20px 0;
-  box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
+  min-height: 300px;
+
+  &--home {
+    @extend .siteContent;
+    background: getColor(background, light);
+    box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
+    padding: 20px 0;
+  }
 }
+
 .siteFooter {
   font-size: .875em;
   padding: 0 0;
