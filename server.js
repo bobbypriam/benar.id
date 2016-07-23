@@ -1,22 +1,14 @@
 'use strict';
 
-const Hapi = require('hapi');
-const Vision = require('vision');
-const Inert = require('inert');
+require('dotenv').config();
+
+const Path = require('path');
+const Glue = require('glue');
 const Handlebars = require('handlebars');
 
-const server = new Hapi.Server();
-server.connection({ port: 7654 });
-
 const routes = [
-  {
-    path: '/',
-    view: 'index',
-  },
-  {
-    path: '/berita',
-    view: 'list',
-  },
+  { path: '/', view: 'index' },
+  { path: '/berita', view: 'list' },
 ].map(route => ({
   method: 'GET',
   path: route.path,
@@ -25,33 +17,35 @@ const routes = [
   },
 }));
 
-server.register([Vision, Inert], (err) => {
-  if (err) {
-    throw err;
-  }
+const options = {
+  relativeTo: Path.resolve(__dirname),
+};
 
-  server.views({
-    engines: { html: Handlebars },
-    path: `${__dirname}/views`,
-    layout: true,
-  });
+Glue.compose(require('./manifest'), options)
+  .then(server => {
+    server.views({
+      engines: { html: Handlebars },
+      path: `${__dirname}/views`,
+      layout: true,
+    });
 
-  server.route(routes);
+    server.route(routes);
 
-  server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-      directory: {
-        path: 'dist',
+    server.route({
+      method: 'GET',
+      path: '/{param*}',
+      handler: {
+        directory: {
+          path: 'dist',
+        },
       },
-    },
-  });
-});
+    });
 
-server.start(err => {
-  if (err) {
+    return server.start()
+      .then(() => {
+        console.log('Server running at:', server.info.uri);
+      });
+  })
+  .catch(err => {
     throw err;
-  }
-  console.log('Server running at:', server.info.uri);
-});
+  });
