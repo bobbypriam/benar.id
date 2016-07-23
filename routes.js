@@ -3,14 +3,14 @@
 module.exports = [
   {
     path: '/',
-    view: 'index',
+    view: 'pages/index',
     context: {
       title: 'NewsReview',
     },
   },
   {
     path: '/artikel',
-    view: 'article/list',
+    view: 'pages/article/list',
     context: {
       title: 'Artikel | NewsReview',
       breadcrumbs: [
@@ -21,7 +21,7 @@ module.exports = [
   },
   {
     path: '/artikel/{id}',
-    view: 'article/detail',
+    view: 'pages/article/detail',
     context: {
       title: 'Judul Artikel | NewsReview',
       breadcrumbs: [
@@ -33,7 +33,7 @@ module.exports = [
   },
   {
     path: '/portal',
-    view: 'portal/list',
+    view: 'pages/portal/list',
     context: {
       title: 'Portal Berita | NewsReview',
       breadcrumbs: [
@@ -44,7 +44,7 @@ module.exports = [
   },
   {
     path: '/portal/{id}',
-    view: 'portal/detail',
+    view: 'pages/portal/detail',
     context: {
       title: 'Portal Berita | NewsReview',
       breadcrumbs: [
