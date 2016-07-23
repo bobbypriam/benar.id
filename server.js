@@ -11,18 +11,18 @@ server.connection({ port: 7654 });
 const routes = [
   {
     path: '/',
-    view: 'index'
+    view: 'index',
   },
   {
     path: '/berita',
-    view: 'list'
+    view: 'list',
   },
 ].map(route => ({
   method: 'GET',
   path: route.path,
   handler: (request, reply) => {
     reply.view(route.view);
-  }
+  },
 }));
 
 server.register([Vision, Inert], (err) => {
@@ -32,7 +32,7 @@ server.register([Vision, Inert], (err) => {
 
   server.views({
     engines: { html: Handlebars },
-    path: __dirname + '/views',
+    path: `${__dirname}/views`,
     layout: true,
   });
 
@@ -43,10 +43,10 @@ server.register([Vision, Inert], (err) => {
     path: '/{param*}',
     handler: {
       directory: {
-        path: 'dist'
-      }
+        path: 'dist',
+      },
     },
-  })
+  });
 });
 
 server.start(err => {
