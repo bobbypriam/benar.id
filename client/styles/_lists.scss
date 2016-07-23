@@ -1,3 +1,11 @@
+.rating {
+  vertical-align: baseline;
+
+  .rating-number {
+    font-size: unitSize(4);
+  }
+}
+
 .review-item {
   @extend .card;
   background-color: #fff;
@@ -13,17 +21,10 @@
   .review-item-header {
     .review-item-article-information {
       width: 80%;
-      .review-item-article-information-title {
-
-      }
     }
 
     .review-item-rating {
-      vertical-align: baseline;
-
-      .review-item-rating-number {
-        font-size: unitSize(4);
-      }
+      @extend .rating;
     }
   }
 
@@ -41,6 +42,32 @@
 
   .review-item-footer {
     vertical-align: baseline;
+  }
+}
+
+.portal-item {
+  @extend .card;
+
+  .portal-item-image {
+    width: 100%;
+    height: 168px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .portal-item-information {
+    border-top: 1px solid #ccc;
+    margin: 8px;
+    padding: 6px;
+
+    .portal-item-information-title {
+      font-size: unitSize(2);
+    }
+
+    .portal-item-information-rating {
+      @extend .rating;
+    }
   }
 }
 
