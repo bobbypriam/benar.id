@@ -23,7 +23,8 @@ Glue.compose(require('./manifest'), options)
     server.views({
       engines: { html: Handlebars },
       path: Path.resolve(__dirname, 'templates'),
-      layout: true,
+      layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
+      layout: 'default',
       isCached: false,
     });
 
