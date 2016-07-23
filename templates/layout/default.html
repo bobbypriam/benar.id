@@ -1,95 +1,11 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <title>{{title}}</title>
+  {{> common/head}}
 </head>
 <body>
-  <header class="siteHeader">
-    <div container>
-      <div row>
-        <h1 column=4 class="logo"><a href="/">NewsReview</a></h1>
-
-        <nav column=8 class="nav">
-          <ul>
-            <li><a href="/artikel">Cari Artikel</a></li>
-            <li><a href="/portal">Portal Berita</a></li>
-            <li class="nav-button"><a href="/gabung">Gabung</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
+  {{> common/navbar}}
   {{{ content }}}
-
-  <footer class="siteFooter">
-    <div container>
-      <div row class="siteFooter-about text--center">
-        <div column=12>
-          <p>NewsReview adalah sebuah aplikasi rating berita urun daya (crowdsourced) untuk dunia jurnalistik Indonesia yang lebih baik.</p>
-        </div>
-      </div>
-      <div row class="siteFooter-colophon">
-        <div column=4>
-          <h5>Disclaimer</h5>
-
-          <p>NewsReview merupakan lembaga non-profit dan tidak berafiliasi dengan institusi dan organisasi mana pun.</p>
-
-          <h5>Open Source</h5>
-
-          <p>Untuk menjamin transparansi, kode sumber situs ini dibuka untuk publik dan dapat diakses pada <a href="#">tautan berikut</a>.</p>
-        </div>
-        <div column=2>
-          <h5>NewsReview</h5>
-          <ul>
-            <li><a href="#">Tentang Kami</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Karir</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-        <div column=2>
-          <h5>Navigasi</h5>
-          <ul>
-            <li><a href="#">Cari Berita</a></li>
-            <li><a href="#">Ulasan</a></li>
-            <li><a href="#">Media</a></li>
-            <li><a href="#">Bergabung</a></li>
-          </ul>
-        </div>
-        <div column=2>
-          <h5>Lebih Jauh</h5>
-          <ul>
-            <li><a href="#">Untuk Media</a></li>
-            <li><a href="#">Donasi</a></li>
-            <li><a href="#">Kebijakan Privasi</a></li>
-            <li><a href="#">Syarat dan Ketentuan</a></li>
-            <li><a href="#">Sitemap</a></li>
-            <li><a href="#">Kode Sumber</a></li>
-          </ul>
-        </div>
-        <div column=2>
-          <h5>Informasi Kontak</h5>
-          <p>
-            Jl. Nama Jalan no. 1, Kota, Provinsi<br />
-            +62 81234567890<br />
-            kontak@newsreview.com<br />
-          </p>
-        </div>
-      </div>
-      <div row class="siteFooter-copyright text--center">
-        <div column=12>
-          <p>Copyleft &copy; 2016 NewsReview</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script type="text/javascript" src="/bundle.js" charset="utf-8"></script>
+  {{> common/footer}}
 </body>
 </html>

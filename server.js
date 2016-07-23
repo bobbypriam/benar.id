@@ -25,6 +25,7 @@ Glue.compose(require('./manifest'), options)
       path: Path.resolve(__dirname, 'templates'),
       layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
       layout: 'default',
+      partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
       isCached: false,
     });
 
