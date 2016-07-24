@@ -23,7 +23,9 @@ module.exports = [
     path: '/artikel/{id}',
     view: 'pages/article/detail',
     context: {
-      title: 'Judul Artikel | NewsReview',
+      title: 'Rating untuk Ketua DPR: Kenaikan Parliamentary ' +
+             'Threshold Harus untuk Kepentingan Bangsa ' +
+             '| NewsReview',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel' },
