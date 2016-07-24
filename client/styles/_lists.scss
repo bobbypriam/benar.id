@@ -37,8 +37,9 @@
 
   &-content {
     .review-item-excerpt {
-      font-size: unitSize(2);
-      width: 70%;
+      // font-size: unitSize(2);
+      // width: 85%;
+      padding: 14px;
     }
 
     .review-item-author {
