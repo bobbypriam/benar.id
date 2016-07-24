@@ -39,6 +39,25 @@ module.exports = [
     },
   },
   {
+    path: '/artikel/{id}/ulasan/{reviewId}',
+    view: 'pages/article/review',
+    context: {
+      title: 'Ulasan Bobby Priambodo untuk Ketua DPR: Kenaikan Parliamentary ' +
+             'Threshold Harus untuk Kepentingan Bangsa ' +
+             '| NewsReview',
+      breadcrumbs: [
+        { path: '/', title: 'Beranda' },
+        { path: '/artikel', title: 'Artikel' },
+        {
+          path: '/artikel/1',
+          title: 'Ketua DPR: Kenaikan Parliamentary ' +
+                 'Threshold Harus untuk Kepentingan Bangsa',
+        },
+        { path: '/artikel/1/ulasan/1', title: 'Ulasan oleh Bobby Priambodo', active: true },
+      ],
+    },
+  },
+  {
     path: '/portal',
     view: 'pages/portal/list',
     context: {
