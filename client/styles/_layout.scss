@@ -48,7 +48,7 @@
     input,
     button {
       font-size: .875rem;
-      background: getColor(shade, primary-dark);
+      background: getColor(text, light);
     }
 
     button {
@@ -58,8 +58,17 @@
 }
 
 .siteHeader {
-  background: getColor(base, primary);
-  color: getColor(background, light);
+  @include box-shadow(1);
+
+  z-index: $z-index-navbar;
+  background: getColor(background, light);
+  color: getColor(base, primary);
+  border-top: 2px solid getColor(base, primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 0;
 
   .logo {
     font-size: 16px;
@@ -67,55 +76,51 @@
     display: inline-block;
 
     a {
-      color: getColor(background, light);
+      color: getColor(base, primary);
     }
   }
 
-  &--fixed {
-    position: fixed;
+  .nav {
+    text-align: right;
 
-  }
-}
+    ul {
+      margin: 0;
+      padding: 0;
 
-.nav {
-  text-align: right;
-
-  ul {
-    margin: 0;
-    padding: 0;
-
-    li {
-      display: inline-block;
-      margin-left: 10px;
-
-      a {
+      li {
         display: inline-block;
-        padding: 6px 10px;
-        color: getColor(background, light);
+        margin-left: 10px;
+
+        a {
+          display: inline-block;
+          padding: 6px 10px;
+          color: getColor(base, primary);
+        }
       }
-    }
-    li:first-of-type {
-      margin-left: 0;
-    }
+      li:first-of-type {
+        margin-left: 0;
+      }
 
-    .nav-button {
-      background: getColor(background, light);
+      .nav-button {
+        background: getColor(base, primary);
 
-      a {
-        color: getColor(base, primary);
+        a {
+          color: getColor(background, light);
+        }
       }
     }
   }
 }
 
 .masthead {
+  @include box-shadow(1);
+  
   background:
     linear-gradient(
       rgba(0, 0, 0, 0.8),
       rgba(0, 0, 0, 0.8)
     ), url(http://bgfons.com/upload/newspaper_texture2847.jpg);
   color: getColor(background, light);
-  box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
   padding: 50px 0;
 
   &--normal {
@@ -192,6 +197,11 @@
 .searchIcon {
   stroke: getColor(background, light);
   fill: none;
+
+  &--dark {
+    stroke: getColor(state, muted);
+    fill: none;
+  }
 }
 
 .masthead-title {
@@ -217,8 +227,8 @@
 
   &--home {
     @extend .siteContent;
+    @include box-shadow(1);
     background: getColor(background, light);
-    box-shadow: 0 0 6px rgba(0,0,0,0.16), 0 0 6px rgba(0,0,0,0.23);
   }
 }
 

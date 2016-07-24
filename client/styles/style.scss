@@ -1,11 +1,17 @@
 @import "vendor/concise";
 
+@import "mixins";
+
 * {
   box-sizing: border-box;
 }
 
 html {
   overflow-x: hidden;
+}
+
+body {
+  margin-top: 43px;
 }
 
 .separator {
@@ -17,6 +23,5 @@ html {
   height: 50px;
   border-radius: 100%;
 }
-
 @import "layout";
 @import "lists";

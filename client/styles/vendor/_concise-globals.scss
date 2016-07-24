@@ -78,6 +78,11 @@ $font-base-size:       14;
 
 
 //
+// Z-Indexes
+// -------------
+$z-index-navbar: 1000;
+
+//
 // Color Palette
 // -------------
 
@@ -98,6 +103,7 @@ $colors: (
     "primary":   #666,
     "secondary": #aaa,
     "heading":   #222,
+    "light":     #f4f4f4,
     "ui":        white
   ),
 
