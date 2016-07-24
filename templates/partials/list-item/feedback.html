@@ -20,7 +20,11 @@
   <div class="review-item-footer text--right">
     <p>
       <a href="">Balas</a> |
+      {{#if hasReplies}}
+      <a href="">Tutup balasan</a>
+      {{else}}
       <a href="">13 Balasan</a>
+      {{/if}}
     </p>
   </div>
 </div>
