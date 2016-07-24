@@ -124,3 +124,7 @@
     }
   }
 }
+
+.card {
+  @include box-shadow(1);
+}
