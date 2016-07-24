@@ -1,9 +1,22 @@
 <header class="siteHeader">
   <div container>
     <div row>
-      <h1 column=4 class="logo"><a href="/">NewsReview</a></h1>
+      <div column="6">
+        <h1 class="logo"><a href="/">NewsReview</a></h1>
+        <div class="smartSearch--navbar">
+          <form>
+            <input type="text" placeholder="Masukkan judul atau tautan menuju berita"/>
+            <button class="button--flat" type="submit">
+              <svg viewBox="0 0 34 34" class="searchIcon">
+                <ellipse stroke-width="3" cx="16" cy="15" rx="12" ry="12"></ellipse>
+                <path d="M26 26 l 8 8" stroke-width="3" stroke-linecap="square"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
 
-      <nav column=8 class="nav">
+      <nav column="6" class="nav">
         <ul>
           <li><a href="/artikel">Cari Artikel</a></li>
           <li><a href="/portal">Portal Berita</a></li>

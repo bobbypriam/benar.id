@@ -84,9 +84,14 @@ $font-base-size:       14;
 // Colors
 $colors: (
   base: (
-    "primary":   #aa3939,
+    "primary":   #2d4571,
     "selection": #d6d6d6,
     "lines":     #e0e0e0
+  ),
+
+  shade: (
+    "primary-dark": #152c55,
+    "primary-light": #4e648d
   ),
 
   text: (

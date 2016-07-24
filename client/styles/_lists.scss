@@ -1,5 +1,9 @@
 .rating {
   vertical-align: baseline;
+  background: getColor(base, primary);
+  color: getColor(background, light);
+  padding-left: 5px;
+  padding-right: 5px;
 
   .rating-number {
     font-size: unitSize(4);

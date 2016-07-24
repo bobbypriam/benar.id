@@ -1,14 +1,79 @@
+.smartSearch {
+  position: relative;
+  display: inline-block;
+
+  form {
+    margin: 0;
+
+    input {
+      width: calc(100% - 33px);
+      border-radius: 0;
+      border: 0;
+      box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+      display: inline;
+    }
+
+    button {
+      height: 32px;
+      width: 32px;
+      padding: 10px;
+      line-height: 0;
+      box-sizing: border-box;
+      display: inline;
+    }
+  }
+
+  ::-webkit-input-placeholder {
+     color: getColor(state, muted);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+     color: getColor(state, muted);
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color: getColor(state, muted);
+  }
+
+  :-ms-input-placeholder {
+     color: getColor(state, muted);
+  }
+
+  &--navbar {
+    @extend .smartSearch;
+
+    margin-left: 10px;
+    width: 300px;
+
+    input,
+    button {
+      font-size: .875rem;
+      background: getColor(shade, primary-dark);
+    }
+
+    button {
+      margin-left: -3px;
+    }
+  }
+}
+
 .siteHeader {
-  background: #aa3939;
+  background: getColor(base, primary);
   color: getColor(background, light);
 
   .logo {
     font-size: 16px;
     margin: 6px 0;
+    display: inline-block;
 
     a {
       color: getColor(background, light);
     }
+  }
+
+  &--fixed {
+    position: fixed;
+
   }
 }
 
@@ -34,8 +99,6 @@
     }
 
     .nav-button {
-      border-left: 1px solid #801616;
-      border-right: 1px solid #801616;
       background: getColor(background, light);
 
       a {
