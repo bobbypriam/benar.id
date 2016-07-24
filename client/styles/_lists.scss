@@ -89,13 +89,22 @@
     display: inline-block;
     width: 18px;
     height: 18px;
-    margin: 0 4px 0 -1px;
+    margin: 0 8px 0 -1px;
     border-radius: 50%;
     vertical-align: top;
   }
 
   a {
     color: inherit;
+  }
+
+  &--big {
+    @extend .nameWithPicture;
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
 
