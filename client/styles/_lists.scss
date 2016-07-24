@@ -12,13 +12,13 @@
   padding: 10px;
   margin-bottom: 10px;
 
-  .review-item-header,
-  .review-item-content,
-  .review-item-footer {
+  &-header,
+  &-content,
+  &-footer {
     @include clearfix();
   }
 
-  .review-item-header {
+  &-header {
     .review-item-article-information {
       width: 80%;
     }
@@ -28,7 +28,7 @@
     }
   }
 
-  .review-item-content {
+  &-content {
     .review-item-excerpt {
       font-size: unitSize(2);
       width: 70%;
@@ -40,7 +40,7 @@
     }
   }
 
-  .review-item-footer {
+  &-footer {
     vertical-align: baseline;
   }
 }
@@ -48,7 +48,7 @@
 .portal-item {
   @extend .card;
 
-  .portal-item-image {
+  &-image {
     width: 100%;
     height: 168px;
     background-size: contain;
@@ -56,17 +56,46 @@
     background-repeat: no-repeat;
   }
 
-  .portal-item-information {
+  &-information {
     border-top: 1px solid #ccc;
     margin: 8px;
     padding: 6px;
 
-    .portal-item-information-title {
+    &-title {
       font-size: unitSize(2);
     }
 
-    .portal-item-information-rating {
+    &-rating {
       @extend .rating;
+    }
+  }
+}
+
+.article-item {
+  padding: 10px;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+  }
+
+  &-title {
+    font-size: unitSize(2);
+  }
+
+  &-url {
+    color: getColor(state, muted);
+  }
+
+  &-metadata {
+    &-portal {
+      img {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 0 0 -1px;
+        border-radius: 50%;
+        vertical-align: top;
+      }
     }
   }
 }

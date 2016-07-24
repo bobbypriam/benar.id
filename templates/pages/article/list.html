@@ -1,15 +1,45 @@
-{{> common/page-title title='Artikel'}}
+<!-- {{> common/page-title title='Artikel'}} -->
 
 {{> common/breadcrumbs}}
 
-<main class="siteContent">
+<main class="siteContent--home">
   <div container>
     <div row>
-      <div column=8>
-        <h4>Main</h4>
+      <div column="3">
+        <h4>Filter berdasarkan...</h4>
+
+        <div class="card">
+
+        </div>
+
+        <h4>Urut berdasarkan...</h4>
+
+        <div class="card">
+          <p>
+            <input type="radio" name="sort" value="date" checked> <label for="date">Tanggal</label> <br>
+            <input type="radio" name="sort" value="rating"> <label for="rating">Rating</label>
+          </p>
+        </div>
       </div>
-      <div column=4>
-        <h4>Sidebar</h4>
+      <div column="6">
+        <h4>Artikel</h4>
+
+        <div>
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+          {{> list-item/article}}
+        </div>
+      </div>
+      <div column="3">
+        <h4>Tautan lain</h4>
       </div>
     </div>
   </div>
