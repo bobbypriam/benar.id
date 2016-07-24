@@ -27,7 +27,12 @@ module.exports = [
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel' },
-        { path: '/artikel/1', title: 'Judul Artikel', active: true },
+        {
+          path: '/artikel/1',
+          title: 'Ketua DPR: Kenaikan Parliamentary ' +
+                 'Threshold Harus untuk Kepentingan Bangsa',
+          active: true,
+        },
       ],
     },
   },

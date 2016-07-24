@@ -83,6 +83,21 @@
   }
 }
 
+.nameWithPicture {
+  img {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 4px 0 -1px;
+    border-radius: 50%;
+    vertical-align: top;
+  }
+
+  a {
+    color: inherit;
+  }
+}
+
 .article-item {
   @extend .card;
   @include box-shadow(1);
@@ -104,14 +119,7 @@
 
   &-metadata {
     &-portal {
-      img {
-        display: inline-block;
-        width: 18px;
-        height: 18px;
-        margin: 0 0 0 -1px;
-        border-radius: 50%;
-        vertical-align: top;
-      }
+      @extend .nameWithPicture;
     }
   }
 }

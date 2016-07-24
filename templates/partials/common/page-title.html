@@ -1,5 +1,16 @@
 <div class="masthead--normal">
   <div container>
-    <h2 class="masthead-title">{{title}}</h2>
+    <div row>
+      <div column="8">
+        <h3 class="masthead-title">{{title}}</h3>
+        {{#if article}}
+          <p>oleh <span class="nameWithPicture"><a href="/portal/1"><img src="https://pesanlogo.files.wordpress.com/2012/02/logo-bar-detik1.jpg" />Detik.com</a></span></p>
+        {{/if}}
+      </div>
+      <div column="4" class="rating text--right">
+        <span class="rating-number">{{rating}}</span>
+        <span class="rating-outOf">/ 10</span>
+      </div>
+    </div>
   </div>
 </div>
