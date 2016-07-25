@@ -6,6 +6,7 @@ module.exports = [
     view: 'pages/index',
     context: {
       title: 'NewsReview',
+      hideNavbarSearch: true,
     },
   },
   {
