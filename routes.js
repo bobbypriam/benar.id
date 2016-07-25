@@ -72,11 +72,22 @@ module.exports = [
     path: '/portal/{id}',
     view: 'pages/portal/detail',
     context: {
-      title: 'Portal Berita | NewsReview',
+      title: 'Detik.com | NewsReview',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/portal', title: 'Portal Berita' },
         { path: '/portal/1', title: 'Detik.com', active: true },
+      ],
+    },
+  },
+  {
+    path: '/user/{id}',
+    view: 'pages/user/detail',
+    context: {
+      title: 'Profil Bobby Priambodo | NewsReview',
+      breadcrumbs: [
+        { path: '/', title: 'Beranda' },
+        { path: '/user/1', title: 'Profil Bobby Priambodo', active: true },
       ],
     },
   },
