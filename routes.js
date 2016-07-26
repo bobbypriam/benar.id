@@ -59,6 +59,25 @@ module.exports = [
     },
   },
   {
+    path: '/artikel/{id}/ulasan/tulis',
+    view: 'pages/article/write',
+    context: {
+      title: 'Tulis Ulasan untuk Ketua DPR: Kenaikan Parliamentary ' +
+             'Threshold Harus untuk Kepentingan Bangsa ' +
+             '| NewsReview',
+      breadcrumbs: [
+        { path: '/', title: 'Beranda' },
+        { path: '/artikel', title: 'Artikel' },
+        {
+          path: '/artikel/1',
+          title: 'Ketua DPR: Kenaikan Parliamentary ' +
+                 'Threshold Harus untuk Kepentingan Bangsa',
+        },
+        { path: '/artikel/1/ulasan/tulis', title: 'Tulis Ulasan', active: true },
+      ],
+    },
+  },
+  {
     path: '/portal',
     view: 'pages/portal/list',
     context: {
