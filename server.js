@@ -18,34 +18,37 @@ const options = {
   relativeTo: Path.resolve(__dirname),
 };
 
-Glue.compose(require('./manifest'), options)
-  .then(server => {
-    server.views({
-      engines: { html: Handlebars },
-      path: Path.resolve(__dirname, 'templates'),
-      layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
-      layout: 'default',
-      partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
-      isCached: false,
-    });
+function initializeServer(server) {
+  server.views({
+    engines: { html: Handlebars },
+    path: Path.resolve(__dirname, 'templates'),
+    layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
+    layout: 'default',
+    partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
+    isCached: false,
+  });
 
-    server.route(routes);
+  server.route(routes);
 
-    server.route({
-      method: 'GET',
-      path: '/{param*}',
-      handler: {
-        directory: {
-          path: 'static',
-        },
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: 'static',
       },
-    });
+    },
+  });
 
-    return server.start()
-      .then(() => {
-        console.log('Server running at:', server.info.uri);
-      });
-  })
+  return server;
+}
+
+Glue.compose(require('./manifest'), options)
+  .then(initializeServer)
+  .then(server => server.start()
+    .then(() => {
+      console.log('Server running at:', server.info.uri);
+    }))
   .catch(err => {
-    throw err;
+    console.error(err);
   });
