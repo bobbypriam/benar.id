@@ -27,6 +27,12 @@ strong {
   height: 50px;
   border-radius: 100%;
 }
+
+// Override mobile font size
+:root {
+  font-size: $font-base-size + px;
+}
+
 @import "layout";
 @import "lists";
 @import "editor";
