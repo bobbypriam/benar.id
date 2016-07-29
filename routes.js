@@ -101,13 +101,24 @@ module.exports = [
     },
   },
   {
-    path: '/member/{id}',
+    path: '/anggota/{id}',
     view: 'pages/member/detail',
     context: {
       title: 'Profil Bobby Priambodo | NewsReview',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
-        { path: '/member/1', title: 'Profil Bobby Priambodo', active: true },
+        { path: '/anggota/1', title: 'Profil Bobby Priambodo', active: true },
+      ],
+    },
+  },
+  {
+    path: '/aturan',
+    view: 'pages/rules',
+    context: {
+      title: 'Aturan Komunitas | NewsReview',
+      breadcrumbs: [
+        { path: '/', title: 'Beranda' },
+        { path: '/aturan', title: 'Aturan Komunitas', active: true },
       ],
     },
   },
