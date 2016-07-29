@@ -101,13 +101,13 @@ module.exports = [
     },
   },
   {
-    path: '/user/{id}',
-    view: 'pages/user/detail',
+    path: '/member/{id}',
+    view: 'pages/member/detail',
     context: {
       title: 'Profil Bobby Priambodo | NewsReview',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
-        { path: '/user/1', title: 'Profil Bobby Priambodo', active: true },
+        { path: '/member/1', title: 'Profil Bobby Priambodo', active: true },
       ],
     },
   },
