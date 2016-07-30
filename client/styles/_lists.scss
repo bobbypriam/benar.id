@@ -10,7 +10,7 @@
 
 .review-item {
   @extend .card;
-  @include box-shadow(1);
+  // @include box-shadow(1);
 
   background-color: #fff;
   padding: 10px;
@@ -59,10 +59,10 @@
 
 .portal-item {
   @extend .card;
-  @include box-shadow(1);
+  // @include box-shadow(1);
 
   &:hover {
-    @include box-shadow(2);
+    // @include box-shadow(2);
   }
 
   &-image {
@@ -114,7 +114,7 @@
 
 .article-item {
   @extend .card;
-  @include box-shadow(1);
+  // @include box-shadow(1);
 
   padding: 10px;
   margin-bottom: 10px;
@@ -139,5 +139,5 @@
 }
 
 .card {
-  @include box-shadow(1);
+  // @include box-shadow(1);
 }

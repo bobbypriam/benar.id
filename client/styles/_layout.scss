@@ -113,7 +113,7 @@
 }
 
 .masthead {
-  @include box-shadow(1);
+  // @include box-shadow(1);
 
   background:
     linear-gradient(
@@ -231,7 +231,7 @@
 
   &--home {
     @extend .siteContent;
-    @include box-shadow(1);
+    // @include box-shadow(1);
     background: getColor(background, light);
   }
 }
