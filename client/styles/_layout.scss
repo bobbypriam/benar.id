@@ -48,11 +48,15 @@
     input,
     button {
       font-size: .875rem;
+    }
+
+    input {
       background: getColor(text, light);
     }
 
     button {
       margin-left: -3px;
+      color: getColor(background, light)
     }
   }
 }
@@ -137,13 +141,8 @@
 
     input {
       width: 100%;
-      color: getColor(background, light);
+      color: getColor(text, primary);
       border-radius: 0;
-      border-color: getColor(base, primary);
-
-      &:focus {
-        background: rgba(255, 255, 255, .1)
-      }
     }
 
     ::-webkit-input-placeholder {
