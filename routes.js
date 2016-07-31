@@ -5,7 +5,7 @@ module.exports = [
     path: '/',
     view: 'pages/index',
     context: {
-      title: 'NewsReview',
+      title: 'Benar.ID',
       hideNavbarSearch: true,
     },
   },
@@ -13,7 +13,7 @@ module.exports = [
     path: '/artikel',
     view: 'pages/article/list',
     context: {
-      title: 'Artikel | NewsReview',
+      title: 'Artikel | Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel', active: true },
@@ -26,7 +26,7 @@ module.exports = [
     context: {
       title: 'Rating untuk Ketua DPR: Kenaikan Parliamentary ' +
              'Threshold Harus untuk Kepentingan Bangsa ' +
-             '| NewsReview',
+             '| Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel' },
@@ -45,7 +45,7 @@ module.exports = [
     context: {
       title: 'Ulasan Bobby Priambodo untuk Ketua DPR: Kenaikan Parliamentary ' +
              'Threshold Harus untuk Kepentingan Bangsa ' +
-             '| NewsReview',
+             '| Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel' },
@@ -64,7 +64,7 @@ module.exports = [
     context: {
       title: 'Tulis Ulasan untuk Ketua DPR: Kenaikan Parliamentary ' +
              'Threshold Harus untuk Kepentingan Bangsa ' +
-             '| NewsReview',
+             '| Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/artikel', title: 'Artikel' },
@@ -81,7 +81,7 @@ module.exports = [
     path: '/portal',
     view: 'pages/portal/list',
     context: {
-      title: 'Portal Berita | NewsReview',
+      title: 'Portal Berita | Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/portal', title: 'Portal Berita', active: true },
@@ -92,7 +92,7 @@ module.exports = [
     path: '/portal/{id}',
     view: 'pages/portal/detail',
     context: {
-      title: 'Detik.com | NewsReview',
+      title: 'Detik.com | Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/portal', title: 'Portal Berita' },
@@ -104,7 +104,7 @@ module.exports = [
     path: '/anggota/{id}',
     view: 'pages/member/detail',
     context: {
-      title: 'Profil Bobby Priambodo | NewsReview',
+      title: 'Profil Bobby Priambodo | Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/anggota/1', title: 'Profil Bobby Priambodo', active: true },
@@ -115,7 +115,7 @@ module.exports = [
     path: '/aturan',
     view: 'pages/rules',
     context: {
-      title: 'Aturan Komunitas | NewsReview',
+      title: 'Aturan Komunitas | Benar.ID',
       breadcrumbs: [
         { path: '/', title: 'Beranda' },
         { path: '/aturan', title: 'Aturan Komunitas', active: true },
