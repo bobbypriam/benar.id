@@ -47,6 +47,12 @@ strong {
   font-size: $font-base-size + px;
 }
 
+.breadcrumbs li {
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
 @import "layout";
 @import "lists";
 @import "editor";
