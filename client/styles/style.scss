@@ -20,8 +20,12 @@ p, ul, ol {
 
 .mainContainer {
   @include box-shadow(1);
-  padding-top: 42px;
+  padding-top: 74px;
   background: #fff;
+
+  @media (min-width: 48em) {
+    padding-top: 42px;
+  }
 }
 
 strong {
