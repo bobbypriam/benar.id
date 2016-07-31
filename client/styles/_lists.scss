@@ -32,6 +32,20 @@
 
       background: getColor(base, primary);
       color: getColor(background, light);
+      display: none;
+
+      &--small {
+        @extend .review-item-rating;
+        display: inline;
+      }
+
+      @media (min-width: 48em) {
+        display: block;
+
+        &--small {
+          display: none;
+        }
+      }
     }
   }
 
