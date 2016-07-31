@@ -113,15 +113,15 @@
 }
 
 .article-item {
-  @extend .card;
   // @include box-shadow(1);
 
   padding: 10px;
   margin-bottom: 10px;
+  border-bottom: 1px solid #e2e2e2;
 
-  &:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
+  // &:not(:last-child) {
+  //   border-bottom: 1px solid #ccc;
+  // }
 
   &-title {
     font-size: unitSize(2);
