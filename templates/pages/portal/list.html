@@ -5,7 +5,24 @@
 <main class="siteContent">
   <div container>
     <div row>
+      <div column="4">
+        <h4>Cari</h4>
+
+        <div class="article-item">
+          <p><input type="text" name="query" placeholder="Portal berita"></p>
+        </div>
+
+        <h4>Urut berdasarkan...</h4>
+
+        <div class="article-item">
+          <p>
+            <input type="radio" name="sort" value="name" checked> <label for="date">Nama</label> <br>
+            <input type="radio" name="sort" value="rating"> <label for="rating">Rating</label>
+          </p>
+        </div>
+      </div>
       <div column="8">
+        <h4>Daftar Portal Berita</h4>
         <div row>
           <div column="3">{{> list-item/portal}}</div>
           <div column="3">{{> list-item/portal}}</div>
@@ -30,22 +47,6 @@
           <div column="3">{{> list-item/portal}}</div>
           <div column="3">{{> list-item/portal}}</div>
           <div column="3">{{> list-item/portal}}</div>
-        </div>
-      </div>
-      <div column="4">
-        <h4>Cari</h4>
-
-        <div class="article-item">
-          <p><input type="text" name="query" placeholder="Portal berita"></p>
-        </div>
-
-        <h4>Urut berdasarkan...</h4>
-
-        <div class="article-item">
-          <p>
-            <input type="radio" name="sort" value="name" checked> <label for="date">Nama</label> <br>
-            <input type="radio" name="sort" value="rating"> <label for="rating">Rating</label>
-          </p>
         </div>
       </div>
     </div>
