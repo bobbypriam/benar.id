@@ -1,0 +1,270 @@
+.smartSearch {
+  position: relative;
+  display: inline-block;
+
+  form {
+    margin: 0;
+
+    input {
+      width: calc(100% - 33px);
+      border-radius: 0;
+      border-top-left-radius: $base-radius;
+      border-bottom-left-radius: $base-radius;
+      display: inline;
+    }
+
+    button {
+      height: 32px;
+      width: 32px;
+      padding: 10px;
+      line-height: 0;
+      box-sizing: border-box;
+      border-top-right-radius: $base-radius;
+      border-bottom-right-radius: $base-radius;
+      display: inline;
+    }
+  }
+
+  ::-webkit-input-placeholder {
+     color: getColor(state, muted);
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+     color: getColor(state, muted);
+  }
+
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color: getColor(state, muted);
+  }
+
+  :-ms-input-placeholder {
+     color: getColor(state, muted);
+  }
+
+  &--navbar {
+    @extend .smartSearch;
+    width: calc(100% - 83px);
+    margin-left: 10px;
+
+    @media (min-width: 48em) {
+      max-width: 400px;
+    }
+
+    input,
+    button {
+      font-size: .875rem;
+    }
+
+    button {
+      margin-left: -4px;
+    }
+  }
+}
+
+.siteHeader {
+  // @include box-shadow(1);
+
+  z-index: $z-index-navbar;
+  background: getColor(background, light);
+  color: getColor(base, primary);
+  border-bottom: 1px solid #ccc;
+  // border-top: 2px solid getColor(base, primary);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 0;
+  text-align: center;
+
+  @media (min-width: 48em) {
+    text-align: left;
+  }
+
+  .logo {
+    font-size: 16px;
+    margin: 6px 0;
+    display: inline-block;
+
+    a {
+      color: getColor(base, primary);
+    }
+  }
+
+  .nav {
+    text-align: center;
+
+    @media (min-width: 48em) {
+      text-align: right;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        margin-left: 10px;
+
+        a {
+          display: inline-block;
+          padding: 6px 10px;
+          color: getColor(base, primary);
+        }
+      }
+      li:first-of-type {
+        margin-left: 0;
+      }
+
+      .nav-button {
+        background: getColor(base, primary);
+
+        a {
+          color: getColor(background, light);
+        }
+      }
+    }
+  }
+}
+
+.masthead {
+  // @include box-shadow(1);
+
+  // background:
+  //   linear-gradient(
+  //     rgba(0, 0, 0, 0.8),
+  //     rgba(0, 0, 0, 0.8)
+  //   ), url(http://bgfons.com/upload/newspaper_texture2847.jpg);
+  // color: getColor(background, light);
+  padding: 20px 0;
+
+  &--normal {
+    @extend .masthead;
+    padding: 10px 0 0;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  .mainSearch {
+    display: inline-block;
+    width: 80%;
+
+    input {
+      width: 100%;
+      color: getColor(text, primary);
+      border-radius: 0;
+      border-top-left-radius: $base-radius;
+      border-bottom-left-radius: $base-radius;
+    }
+
+    ::-webkit-input-placeholder {
+       color: getColor(state, muted);
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: getColor(state, muted);
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: getColor(state, muted);
+    }
+
+    :-ms-input-placeholder {
+       color: getColor(state, muted);
+    }
+  }
+  .mainSearchButton {
+    height: 32px;
+    width: 32px;
+    padding: 10px;
+    line-height: 0;
+    margin-left: -4px;
+    box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid getColor(base, primary);
+    border-left: 0;
+    border-top-right-radius: $base-radius;
+    border-bottom-right-radius: $base-radius;
+  }
+}
+@media (min-width: 48em) {
+  .masthead {
+    padding: 100px 0;
+
+    &--normal {
+      padding: 10px 0;
+    }
+
+    .mainSearch {
+      margin-right: 48px;
+      max-width: 600px;
+      input {
+        height: 48px;
+        font-size: 1.5em;
+      }
+    }
+    .mainSearchButton {
+      height: 48px;
+      width: 48px;
+      margin-left: -52px;
+      padding: 10px;
+    }
+  }
+}
+.searchIcon {
+  stroke: getColor(background, light);
+  fill: none;
+
+  &--dark {
+    stroke: getColor(state, muted);
+    fill: none;
+  }
+}
+
+.masthead-title {
+  margin-top: 0;
+  // color: getColor(background, light);
+}
+
+.breadcrumbsWrapper {
+  padding: 10px;
+
+  .breadcrumbs {
+    margin-bottom: 0;
+  }
+}
+
+.siteContent {
+  min-height: 200px;
+  padding: 20px 0;
+
+  [row]:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &--home {
+    @extend .siteContent;
+    // @include box-shadow(1);
+    background: getColor(background, light);
+  }
+}
+
+.siteFooter {
+  font-size: .875em;
+  padding: 0 0;
+  color: #999;
+
+  h5 {
+    color: #999;
+  }
+
+  [row] {
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+  }
+
+  [row]:first-of-type {
+    border: 0;
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "news-review",
+  "name": "benar.id",
   "version": "0.1.0",
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
@@ -7,5 +7,27 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "concise.css": "^3.4.0",
+    "dotenv": "^2.0.0",
+    "glue": "^3.3.0",
+    "good": "^7.0.1",
+    "good-console": "^6.1.2",
+    "good-squeeze": "^4.0.0",
+    "handlebars": "^4.0.5",
+    "hapi": "^13.5.0",
+    "inert": "^4.0.1",
+    "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb-base": "^4.0.2",
+    "eslint-plugin-import": "^1.11.1",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  }
 }

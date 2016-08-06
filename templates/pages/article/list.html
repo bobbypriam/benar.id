@@ -1,0 +1,41 @@
+{{> common/breadcrumbs}}
+
+{{> common/page-title title='Artikel'}}
+
+<main class="siteContent">
+  <div container>
+    <div row>
+      <div column="3">
+        <h4>Urut berdasarkan...</h4>
+
+        <div class="article-item">
+          <p>
+            <input type="radio" name="sort" value="date" checked> <label for="date">Tanggal</label> <br>
+            <input type="radio" name="sort" value="rating"> <label for="rating">Rating</label>
+          </p>
+        </div>
+
+        <h4>Filter berdasarkan...</h4>
+
+        <div class="article-item">
+          <p><input type="text" name="media" placeholder="Media"></p>
+          <p><input type="text" name="topic" placeholder="Topik"></p>
+        </div>
+      </div>
+      <div column="9">
+        <h4>Daftar Artikel</h4>
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+        {{> list-item/article}}
+      </div>
+    </div>
+  </div>
+</main>
