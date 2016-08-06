@@ -1,22 +1,20 @@
-'use strict';
+require('dotenv').config()
 
-require('dotenv').config();
-
-const Path = require('path');
-const Glue = require('glue');
-const Handlebars = require('handlebars');
+const Path = require('path')
+const Glue = require('glue')
+const Handlebars = require('handlebars')
 
 const routes = require('./routes').map(route => ({
   method: 'GET',
   path: route.path,
   handler: (request, reply) => {
-    reply.view(route.view, route.context || {});
+    reply.view(route.view, route.context || {})
   },
-}));
+}))
 
 const options = {
   relativeTo: Path.resolve(__dirname),
-};
+}
 
 function initializeServer(server) {
   server.views({
@@ -26,9 +24,9 @@ function initializeServer(server) {
     layout: 'default',
     partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
     isCached: false,
-  });
+  })
 
-  server.route(routes);
+  server.route(routes)
 
   server.route({
     method: 'GET',
@@ -38,17 +36,17 @@ function initializeServer(server) {
         path: 'static',
       },
     },
-  });
+  })
 
-  return server;
+  return server
 }
 
 Glue.compose(require('./manifest'), options)
   .then(initializeServer)
   .then(server => server.start()
     .then(() => {
-      console.log('Server running at:', server.info.uri);
+      console.log('Server running at:', server.info.uri)
     }))
   .catch(err => {
-    console.error(err);
-  });
+    console.error(err)
+  })

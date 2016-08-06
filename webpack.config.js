@@ -1,6 +1,4 @@
-'use strict';
-
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   entry: './client/entry.js',
@@ -16,4 +14,4 @@ module.exports = {
       },
     ],
   },
-};
+}

@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   connections: [
     {
@@ -30,4 +28,4 @@ module.exports = {
       },
     },
   ],
-};
+}

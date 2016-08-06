@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = [
   {
     path: '/',
@@ -122,4 +120,4 @@ module.exports = [
       ],
     },
   },
-];
+]
