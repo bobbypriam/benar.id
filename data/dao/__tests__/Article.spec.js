@@ -60,6 +60,21 @@ describe('#create()', () => {
   })
 })
 
+describe('#getAll()', () => {
+  before(() => {
+    const promises = articles.valid.map(article => Article.create(Object.assign({}, article, {
+      portal_id: portalId,
+      member_id: memberId,
+    })))
+    return Promise.all(promises)
+  })
+
+  it('should return all articles', () => {
+    const promise = Article.getAll()
+    return promise.should.eventually.have.length(articles.valid.length)
+  })
+})
+
 afterEach(() => Article.clear())
 
 after(() => Promise.all([
