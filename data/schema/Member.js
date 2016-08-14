@@ -17,7 +17,7 @@ class Member extends Model {
       },
       feedbacks: {
         relation: Model.HasManyRelation,
-        modelClass: `${__dirname}/Review`,
+        modelClass: `${__dirname}/Feedback`,
         join: {
           from: 'member.id',
           to: 'feedback.member_id',
@@ -29,7 +29,7 @@ class Member extends Model {
         join: {
           from: 'member.id',
           through: {
-            from: 'member_role.member.id',
+            from: 'member_role.member_id',
             to: 'member_role.role_id',
           },
           to: 'role.id',
