@@ -4,7 +4,7 @@
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha '**/__tests__/*.spec.js'"
+    "test": "NODE_ENV=test mocha '**/__tests__/run.js'"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
   "license": "GPL-3.0",
