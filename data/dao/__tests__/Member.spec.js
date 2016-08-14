@@ -54,7 +54,7 @@ describe('#update()', () => {
   })
 })
 
-describe('#delete()', () => {
+describe('#remove()', () => {
   let memberId
 
   before(() => Member

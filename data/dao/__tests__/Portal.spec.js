@@ -66,7 +66,7 @@ describe('#update()', () => {
   })
 })
 
-describe('#delete()', () => {
+describe('#remove()', () => {
   let portalId
 
   before(() => Portal
