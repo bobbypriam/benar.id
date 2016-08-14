@@ -15,6 +15,12 @@ module.exports.getAll = function getAll() {
   return Article.query()
 }
 
+module.exports.update = function update(id, data) {
+  return Article
+    .query()
+    .updateAndFetchById(id, data)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {

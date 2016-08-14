@@ -91,6 +91,25 @@ describe('#getAll()', () => {
   })
 })
 
+describe('#update()', () => {
+  let articleId
+
+  before(() =>
+    Article.create(Object.assign({}, articles.valid[0], {
+      portal_id: portalId,
+      member_id: memberId,
+    })).then(createdArticle => { articleId = createdArticle.id })
+  )
+
+  it('should update article with the new data', () => {
+    const newData = {
+      title: 'New Title',
+    }
+    const promise = Article.update(articleId, newData)
+    return promise.should.eventually.deep.property('title', newData.title)
+  })
+})
+
 afterEach(() => Article.clear())
 
 after(() => Promise.all([
