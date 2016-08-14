@@ -4,6 +4,13 @@ module.exports.create = function create(articleData) {
   return Article.query().insert(articleData)
 }
 
+module.exports.get = function get(id) {
+  return Article
+    .query()
+    .where('id', id)
+    .then(articles => articles[0])
+}
+
 module.exports.getAll = function getAll() {
   return Article.query()
 }

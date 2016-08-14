@@ -60,6 +60,22 @@ describe('#create()', () => {
   })
 })
 
+describe('#get()', () => {
+  let articleId
+
+  before(() =>
+    Article.create(Object.assign({}, articles.valid[0], {
+      portal_id: portalId,
+      member_id: memberId,
+    })).then(createdArticle => { articleId = createdArticle.id })
+  )
+
+  it('should return the article with the provided id', () => {
+    const promise = Article.get(articleId)
+    return promise.should.eventually.deep.property('title', articles.valid[0].title)
+  })
+})
+
 describe('#getAll()', () => {
   before(() => {
     const promises = articles.valid.map(article => Article.create(Object.assign({}, article, {
