@@ -26,4 +26,14 @@ describe('#create()', () => {
   })
 })
 
+describe('#get()', () => {
+  before(() => Member.create(members.valid[0]))
+
+  it('should return the member with the provided slug', () => {
+    const slug = members.valid[0].name_slug
+    const promise = Member.get(slug)
+    return promise.should.eventually.deep.property('name', members.valid[0].name)
+  })
+})
+
 afterEach(() => Member.clear())
