@@ -7,7 +7,7 @@ module.exports.create = function create(portalData) {
 module.exports.get = function get(slug) {
   return Portal
     .query()
-    .where('name_slug', slug)
+    .where('slug', slug)
     .then(portals => portals[0])
 }
 
