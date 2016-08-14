@@ -11,6 +11,10 @@ module.exports.get = function get(slug) {
     .then(portals => portals[0])
 }
 
+module.exports.getAll = function getAll() {
+  return Portal.query()
+}
+
 module.exports.update = function update(id, data) {
   return Portal
     .query()

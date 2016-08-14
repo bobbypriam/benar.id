@@ -36,6 +36,18 @@ describe('#get()', () => {
   })
 })
 
+describe('#getAll()', () => {
+  before(() => {
+    const promises = portals.valid.map(portal => Portal.create(portal))
+    return Promise.all(promises)
+  })
+
+  it('should return all portals', () => {
+    const promise = Portal.getAll()
+    return promise.should.eventually.have.length(portals.valid.length)
+  })
+})
+
 describe('#update()', () => {
   let portalId
 
