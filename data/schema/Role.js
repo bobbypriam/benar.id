@@ -1,4 +1,4 @@
-const { Model } = require('objection')
+const Model = require('./BaseModel')
 
 class Role extends Model {
   static get tableName() {
