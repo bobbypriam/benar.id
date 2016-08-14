@@ -11,6 +11,12 @@ module.exports.get = function get(slug) {
     .then(members => members[0])
 }
 
+module.exports.update = function update(id, data) {
+  return Member
+    .query()
+    .updateAndFetchById(id, data)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {

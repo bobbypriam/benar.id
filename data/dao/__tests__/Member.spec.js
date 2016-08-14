@@ -36,4 +36,22 @@ describe('#get()', () => {
   })
 })
 
+describe('#update()', () => {
+  let memberId
+
+  before(() => Member
+    .create(members.valid[0])
+    .then(createdMember => {
+      memberId = createdMember.id
+    }))
+
+  it('should update member with the new data', () => {
+    const newData = {
+      name: 'John New',
+    }
+    const promise = Member.update(memberId, newData)
+    return promise.should.eventually.deep.property('name', newData.name)
+  })
+})
+
 afterEach(() => Member.clear())
