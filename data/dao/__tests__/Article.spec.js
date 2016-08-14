@@ -110,6 +110,22 @@ describe('#update()', () => {
   })
 })
 
+describe('#remove()', () => {
+  let articleId
+
+  before(() =>
+    Article.create(Object.assign({}, articles.valid[0], {
+      portal_id: portalId,
+      member_id: memberId,
+    })).then(createdArticle => { articleId = createdArticle.id })
+  )
+
+  it('should delete article with given articleId', () => {
+    const promise = Article.remove(articleId)
+    return promise.should.eventually.equal(1)
+  })
+})
+
 afterEach(() => Article.clear())
 
 after(() => Promise.all([

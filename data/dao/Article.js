@@ -21,6 +21,13 @@ module.exports.update = function update(id, data) {
     .updateAndFetchById(id, data)
 }
 
+module.exports.remove = function remove(id) {
+  return Article
+    .query()
+    .where('id', id)
+    .del()
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {
