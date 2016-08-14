@@ -54,4 +54,19 @@ describe('#update()', () => {
   })
 })
 
+describe('#delete()', () => {
+  let memberId
+
+  before(() => Member
+    .create(members.valid[0])
+    .then(createdMember => {
+      memberId = createdMember.id
+    }))
+
+  it('should delete member with given memberId', () => {
+    const promise = Member.remove(memberId)
+    return promise.should.eventually.equal(1)
+  })
+})
+
 afterEach(() => Member.clear())
