@@ -8,4 +8,5 @@ function importTest(name, path) {
 
 describe('DAO tests', () => {
   importTest('Member', './Member.spec')
+  importTest('Portal', './Portal.spec')
 })
