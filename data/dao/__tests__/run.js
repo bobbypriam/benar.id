@@ -1,4 +1,4 @@
-const setup = require('./helpers/setup')
+require('dotenv').config()
 
 function importTest(name, path) {
   describe(name, () => {
@@ -7,17 +7,5 @@ function importTest(name, path) {
 }
 
 describe('DAO tests', () => {
-  before(function initTestDb() {
-    this.timeout(10000)
-    console.log('  ### CREATING TEST DATABASE AND TABLES ###')
-    return setup.createTestDb()
-      .then(() => setup.initTestTables())
-  })
-
   importTest('Member', './Member.spec')
-
-  after(() => {
-    console.log('  ### DESTROYING TEST DATABASE AND TABLES ###')
-    return setup.destroyTestDb()
-  })
 })

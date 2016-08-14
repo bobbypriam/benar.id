@@ -4,7 +4,11 @@
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha '**/__tests__/run.js'"
+    "test": "npm run integration-test",
+    "integration-test": "npm run create-test-db; npm run run-dao-test; npm run destroy-test-db",
+    "create-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/createTestDb",
+    "run-dao-test": "NODE_ENV=test mocha 'data/dao/__tests__/run.js'",
+    "destroy-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/destroyTestDb"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
   "license": "GPL-3.0",
