@@ -10,4 +10,5 @@ describe('DAO tests', () => {
   importTest('Member', './Member.spec')
   importTest('Portal', './Portal.spec')
   importTest('Article', './Article.spec')
+  importTest('Review', './Review.spec')
 })
