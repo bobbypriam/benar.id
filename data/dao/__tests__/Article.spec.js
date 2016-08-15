@@ -20,7 +20,7 @@ before(() =>
 )
 
 describe('#create()', () => {
-  it('should create a new portal if called with valid data', () => {
+  it('should create a new article if called with valid data', () => {
     const articleData = Object.assign({}, articles.valid[0], {
       portal_id: portalId,
       member_id: memberId,
