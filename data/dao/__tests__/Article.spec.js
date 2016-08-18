@@ -3,9 +3,11 @@ require('./helpers/common').chai.should()
 const Portal = require('../Portal')
 const Member = require('../Member')
 const Article = require('../Article')
+const Review = require('../Review')
 const portals = require('./fixtures/portals')
 const members = require('./fixtures/members')
 const articles = require('./fixtures/articles')
+const reviews = require('./fixtures/reviews')
 
 let portalId
 let memberId
@@ -126,7 +128,29 @@ describe('#remove()', () => {
   })
 })
 
-afterEach(() => Article.clear())
+describe('#writeReview()', () => {
+  let articleId
+
+  before(() =>
+    Article.create(Object.assign({}, articles.valid[0], {
+      portal_id: portalId,
+      member_id: memberId,
+    })).then(createdArticle => { articleId = createdArticle.id })
+  )
+
+  it('should create a new review entry', () => {
+    const reviewData = Object.assign({}, reviews.valid[0], {
+      member_id: memberId,
+    })
+    const promise = Article.writeReview(articleId, reviewData)
+    return promise.should.be.fulfilled
+  })
+})
+
+afterEach(() =>
+  Review.clear()
+    .then(() => Article.clear())
+)
 
 after(() => Promise.all([
   Portal.clear(),

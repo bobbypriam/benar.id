@@ -1,4 +1,5 @@
 const Article = require('../schema/Article')
+const Review = require('../schema/Review')
 
 module.exports.create = function create(articleData) {
   return Article.query().insert(articleData)
@@ -26,6 +27,14 @@ module.exports.remove = function remove(id) {
     .query()
     .where('id', id)
     .del()
+}
+
+module.exports.writeReview = function writeReview(id, data) {
+  return Review
+    .query()
+    .insert(Object.assign({}, data, {
+      article_id: id,
+    }))
 }
 
 // CAUTION: DON'T USE THIS ON APP CODE
