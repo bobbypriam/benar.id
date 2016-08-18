@@ -37,6 +37,12 @@ module.exports.writeReview = function writeReview(id, data) {
     }))
 }
 
+module.exports.getReviews = function getReviews(id) {
+  return Review
+    .query()
+    .where('article_id', id)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {

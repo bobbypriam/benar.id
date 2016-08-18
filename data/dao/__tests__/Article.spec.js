@@ -147,6 +147,32 @@ describe('#writeReview()', () => {
   })
 })
 
+describe('#getReviews()', () => {
+  let articleId
+
+  before(() =>
+    Article
+      .create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      }))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() => {
+        const promises = reviews.valid.map(review =>
+          Article.writeReview(articleId, Object.assign({}, review, {
+            member_id: memberId,
+          }))
+        )
+        return Promise.all(promises)
+      })
+  )
+
+  it('should fetch all reviews of an article', () => {
+    const promise = Article.getReviews(articleId)
+    return promise.should.eventually.have.length(reviews.valid.length)
+  })
+})
+
 afterEach(() =>
   Review.clear()
     .then(() => Article.clear())
