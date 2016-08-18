@@ -295,7 +295,39 @@ describe('#writeReviewFeedback()', () => {
 })
 
 describe('#getReviewFeedbacks()', () => {
-  it('should get all feedbacks for a review')
+  let articleId
+
+  before(() =>
+    Article
+      .create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      }))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() =>
+        Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+          member_id: memberId,
+        }))
+      )
+      .then(() => {
+        const promises = feedbacks.valid.map(feedback =>
+          Article.writeReviewFeedback(
+            articleId,
+            members.valid[0].name_slug,
+            Object.assign({}, feedback, {
+              member_id: memberId,
+            })
+          )
+        )
+        return Promise.all(promises)
+      })
+  )
+
+  it('should get all feedbacks for a review', () => {
+    const slug = members.valid[0].name_slug
+    const promise = Article.getReviewFeedbacks(articleId, slug)
+    return promise.should.eventually.have.length(feedbacks.valid.length)
+  })
 })
 
 afterEach(() =>

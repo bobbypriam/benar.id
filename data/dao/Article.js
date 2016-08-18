@@ -111,6 +111,21 @@ module.exports.writeReviewFeedback = function writeReviewFeedback(id, reviewerSl
     })
 }
 
+module.exports.getReviewFeedbacks = function getReviewFeedbacks(id, reviewerSlug) {
+  const memberWithSlug = Member
+    .query()
+    .select('id')
+    .where('name_slug', reviewerSlug)
+  const review = Review
+    .query()
+    .select('id')
+    .where('article_id', id)
+    .where('member_id', memberWithSlug)
+  return Feedback
+    .query()
+    .where('review_id', review)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {
