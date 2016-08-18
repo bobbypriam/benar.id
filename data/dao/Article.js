@@ -76,6 +76,18 @@ module.exports.updateReview = function updateReview(id, reviewerSlug, newData) {
     })
 }
 
+module.exports.removeReview = function removeReview(id, reviewerSlug) {
+  const memberWithSlug = Member
+    .query()
+    .select('id')
+    .where('name_slug', reviewerSlug)
+  return Review
+    .query()
+    .where('article_id', id)
+    .where('member_id', memberWithSlug)
+    .del()
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {

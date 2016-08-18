@@ -241,6 +241,30 @@ describe('#updateReview()', () => {
   })
 })
 
+describe('#removeReview()', () => {
+  let articleId
+
+  before(() =>
+    Article
+      .create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      }))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() =>
+        Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+          member_id: memberId,
+        }))
+      )
+  )
+
+  it('should delete review with given articleId and reviewerSlug', () => {
+    const slug = members.valid[0].name_slug
+    const promise = Article.removeReview(articleId, slug)
+    return promise.should.eventually.equal(1)
+  })
+})
+
 afterEach(() =>
   Review.clear()
     .then(() => Article.clear())
