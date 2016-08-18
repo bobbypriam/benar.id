@@ -1,5 +1,6 @@
 const Article = require('../schema/Article')
 const Review = require('../schema/Review')
+const Member = require('../schema/Member')
 
 module.exports.create = function create(articleData) {
   return Article.query().insert(articleData)
@@ -44,11 +45,14 @@ module.exports.getReviews = function getReviews(id) {
 }
 
 module.exports.getReview = function getReview(id, reviewerSlug) {
+  const memberWithSlug = Member
+    .query()
+    .select('id')
+    .where('name_slug', reviewerSlug)
   return Review
     .query()
     .where('article_id', id)
-    .leftJoinRelation('member')
-    .where('member.name_slug', reviewerSlug)
+    .where('member_id', memberWithSlug)
     .then(result => result[0] || null)
 }
 
