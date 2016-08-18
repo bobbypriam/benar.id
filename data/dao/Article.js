@@ -43,6 +43,15 @@ module.exports.getReviews = function getReviews(id) {
     .where('article_id', id)
 }
 
+module.exports.getReview = function getReview(id, reviewerSlug) {
+  return Review
+    .query()
+    .where('article_id', id)
+    .leftJoinRelation('member')
+    .where('member.name_slug', reviewerSlug)
+    .then(result => result[0] || null)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {

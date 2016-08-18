@@ -173,6 +173,49 @@ describe('#getReviews()', () => {
   })
 })
 
+describe('#getReview()', () => {
+  let articleId
+  let otherMemberId
+
+  before(() =>
+    Promise.all([
+      // Create other member
+      Member.create(members.valid[1])
+        .then(createdMember => { otherMemberId = createdMember.id }),
+      // Create article reviews
+      Article
+        .create(Object.assign({}, articles.valid[0], {
+          portal_id: portalId,
+          member_id: memberId,
+        }))
+        .then(createdArticle => { articleId = createdArticle.id })
+        .then(() => {
+          const promises = [
+            Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+              member_id: memberId,
+            })),
+            Article.writeReview(articleId, Object.assign({}, reviews.valid[1], {
+              member_id: otherMemberId,
+            })),
+          ]
+          return Promise.all(promises)
+        }),
+    ])
+  )
+
+  it('should return a review based on the reviewer\'s slug', () => {
+    const slug = members.valid[0].name_slug
+    const promise = Article.getReview(articleId, slug)
+    return promise.should.eventually.deep.property('content', reviews.valid[0].content)
+  })
+
+  it('should return null if review with provided reviewer is not found', () => {
+    const slug = 'Nonexistent-Member'
+    const promise = Article.getReview(articleId, slug)
+    return promise.should.eventually.be.null
+  })
+})
+
 afterEach(() =>
   Review.clear()
     .then(() => Article.clear())
