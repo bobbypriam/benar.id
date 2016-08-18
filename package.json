@@ -4,7 +4,11 @@
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run integration-test",
+    "integration-test": "npm run create-test-db; npm run run-dao-test; npm run destroy-test-db",
+    "create-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/createTestDb",
+    "run-dao-test": "NODE_ENV=test mocha 'data/dao/__tests__/run.js'",
+    "destroy-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/destroyTestDb"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
   "license": "GPL-3.0",
@@ -18,13 +22,19 @@
     "handlebars": "^4.0.5",
     "hapi": "^13.5.0",
     "inert": "^4.0.1",
+    "knex": "^0.11.7",
+    "mysql": "^2.11.1",
+    "objection": "^0.5.5",
     "vision": "^4.1.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
     "css-loader": "^0.23.1",
     "eslint": "^3.1.1",
     "eslint-config-airbnb-base": "^4.0.2",
     "eslint-plugin-import": "^1.11.1",
+    "mocha": "^3.0.1",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",

@@ -2,11 +2,13 @@
   "extends": "airbnb-base",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "rules": {
     "no-console": 0,
     "semi": [2, "never"],
-    "no-unexpected-multiline": 2
+    "no-unexpected-multiline": 2,
+    "import/no-extraneous-dependencies": [2, { "devDependencies": true }]
   }
 }
