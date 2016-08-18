@@ -1,6 +1,7 @@
 const Article = require('../schema/Article')
 const Review = require('../schema/Review')
 const Member = require('../schema/Member')
+const Feedback = require('../schema/Feedback')
 
 module.exports.create = function create(articleData) {
   return Article.query().insert(articleData)
@@ -86,6 +87,28 @@ module.exports.removeReview = function removeReview(id, reviewerSlug) {
     .where('article_id', id)
     .where('member_id', memberWithSlug)
     .del()
+}
+
+module.exports.writeReviewFeedback = function writeReviewFeedback(id, reviewerSlug, feedbackData) {
+  const memberWithSlug = Member
+    .query()
+    .select('id')
+    .where('name_slug', reviewerSlug)
+  return Review
+    .query()
+    .where('article_id', id)
+    .where('member_id', memberWithSlug)
+    .then(result => {
+      if (!result[0]) {
+        throw new Error('Review not found.')
+      }
+
+      const newFeedbackData = Object.assign({}, feedbackData, {
+        review_id: result[0].id,
+      })
+
+      return Feedback.query().insert(newFeedbackData)
+    })
 }
 
 // CAUTION: DON'T USE THIS ON APP CODE

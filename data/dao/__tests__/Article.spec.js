@@ -4,10 +4,12 @@ const Portal = require('../Portal')
 const Member = require('../Member')
 const Article = require('../Article')
 const Review = require('../Review')
+const Feedback = require('../Feedback')
 const portals = require('./fixtures/portals')
 const members = require('./fixtures/members')
 const articles = require('./fixtures/articles')
 const reviews = require('./fixtures/reviews')
+const feedbacks = require('./fixtures/reviews')
 
 let portalId
 let memberId
@@ -265,8 +267,40 @@ describe('#removeReview()', () => {
   })
 })
 
+describe('#writeReviewFeedback()', () => {
+  let articleId
+
+  before(() =>
+    Article
+      .create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      }))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() =>
+        Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+          member_id: memberId,
+        }))
+      )
+  )
+
+  it('should add a feedback to a review', () => {
+    const slug = members.valid[0].name_slug
+    const feedbackData = Object.assign({}, feedbacks.valid[0], {
+      member_id: memberId,
+    })
+    const promise = Article.writeReviewFeedback(articleId, slug, feedbackData)
+    return promise.should.be.fulfilled
+  })
+})
+
+describe('#getReviewFeedbacks()', () => {
+  it('should get all feedbacks for a review')
+})
+
 afterEach(() =>
-  Review.clear()
+  Feedback.clear()
+    .then(() => Review.clear())
     .then(() => Article.clear())
 )
 
