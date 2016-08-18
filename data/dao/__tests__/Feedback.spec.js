@@ -59,6 +59,16 @@ describe('#writeReply()', () => {
   })
 })
 
+describe('#update()', () => {
+  it('should update feedback with the new data', () => {
+    const newData = {
+      content: '<p>new content</p>',
+    }
+    const promise = Feedback.update(feedbackId, newData)
+    return promise.should.eventually.deep.property('content', newData.content)
+  })
+})
+
 after(() =>
   Feedback.clear()
     .then(() => Review.clear())

@@ -20,6 +20,12 @@ module.exports.writeReply = function writeReply(id, data) {
     })
 }
 
+module.exports.update = function update(id, data) {
+  return Feedback
+    .query()
+    .updateAndFetchById(id, data)
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {
