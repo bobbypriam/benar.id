@@ -216,6 +216,31 @@ describe('#getReview()', () => {
   })
 })
 
+describe('#updateReview()', () => {
+  let articleId
+
+  before(() =>
+    Article
+      .create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      }))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() =>
+        Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+          member_id: memberId,
+        }))
+      )
+  )
+
+  it('should update a review based on the reviewer\'s slug', () => {
+    const slug = members.valid[0].name_slug
+    const newReviewData = { content: '<p>New Content</p>' }
+    const promise = Article.updateReview(articleId, slug, newReviewData)
+    return promise.should.eventually.deep.property('content', newReviewData.content)
+  })
+})
+
 afterEach(() =>
   Review.clear()
     .then(() => Article.clear())

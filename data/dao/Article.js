@@ -56,6 +56,26 @@ module.exports.getReview = function getReview(id, reviewerSlug) {
     .then(result => result[0] || null)
 }
 
+module.exports.updateReview = function updateReview(id, reviewerSlug, newData) {
+  const memberWithSlug = Member
+    .query()
+    .select('id')
+    .where('name_slug', reviewerSlug)
+  return Review
+    .query()
+    .where('article_id', id)
+    .where('member_id', memberWithSlug)
+    .then(result => {
+      if (!result[0]) {
+        throw new Error('Review not found.')
+      }
+      const review = result[0]
+      return review
+        .$query()
+        .updateAndFetch(newData)
+    })
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {
