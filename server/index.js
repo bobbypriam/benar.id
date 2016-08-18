@@ -12,6 +12,8 @@ const routes = require('./routes').map(route => ({
   },
 }))
 
+const manifest = require('./manifest')
+
 const options = {
   relativeTo: Path.resolve(__dirname),
 }
@@ -41,12 +43,16 @@ function initializeServer(server) {
   return server
 }
 
-Glue.compose(require('./manifest'), options)
-  .then(initializeServer)
-  .then(server => server.start()
-    .then(() => {
-      console.log('Server running at:', server.info.uri)
-    }))
-  .catch(err => {
-    console.error(err)
-  })
+function run() {
+  Glue.compose(manifest, options)
+    .then(initializeServer)
+    .then(server => server.start()
+      .then(() => {
+        console.log('Server running at:', server.info.uri)
+      }))
+    .catch(err => {
+      console.error(err)
+    })
+}
+
+module.exports.run = run
