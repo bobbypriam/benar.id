@@ -2,15 +2,9 @@ require('dotenv').config()
 
 const Path = require('path')
 const Glue = require('glue')
-const Handlebars = require('handlebars')
+// const Handlebars = require('handlebars')
 
-const routes = require('./routes').map(route => ({
-  method: 'GET',
-  path: route.path,
-  handler: (request, reply) => {
-    reply.view(route.view, route.context || {})
-  },
-}))
+const routes = require('./routes')
 
 const manifest = require('./manifest')
 
@@ -19,26 +13,26 @@ const options = {
 }
 
 function initializeServer(server) {
-  server.views({
-    engines: { html: Handlebars },
-    path: Path.resolve(__dirname, 'templates'),
-    layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
-    layout: 'default',
-    partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
-    isCached: false,
-  })
+  // server.views({
+  //   engines: { html: Handlebars },
+  //   path: Path.resolve(__dirname, 'templates'),
+  //   layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
+  //   layout: 'default',
+  //   partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
+  //   isCached: false,
+  // })
 
   server.route(routes)
 
-  server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-      directory: {
-        path: 'static',
-      },
-    },
-  })
+  // server.route({
+  //   method: 'GET',
+  //   path: '/{param*}',
+  //   handler: {
+  //     directory: {
+  //       path: 'static',
+  //     },
+  //   },
+  // })
 
   return server
 }
