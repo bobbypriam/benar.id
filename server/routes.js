@@ -27,6 +27,18 @@ module.exports = [
   },
   {
     method: 'POST',
+    path: '/masuk',
+    handler: handlers.postLogin,
+    config: {
+      validate: {
+        payload: {
+          email: Joi.string().email().required(),
+        },
+      },
+    },
+  },
+  {
+    method: 'POST',
     path: '/gabung',
     handler: handlers.postSignUp,
     config: {
