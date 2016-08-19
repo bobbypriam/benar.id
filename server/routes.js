@@ -14,6 +14,10 @@ module.exports = [
       },
     },
   },
+
+  /**
+   * Auth routes
+   */
   {
     method: 'GET',
     path: '/masuk',
@@ -59,6 +63,18 @@ module.exports = [
         mode: 'try',
         strategy: 'session',
       },
+    },
+  },
+
+  /**
+   * Protected routes
+   */
+  {
+    method: 'GET',
+    path: '/artikel/baru',
+    handler: handlers.getNewArticle,
+    config: {
+      auth: 'session',
     },
   },
 ]
