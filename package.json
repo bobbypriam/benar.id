@@ -24,9 +24,11 @@
     "hapi": "^13.5.0",
     "hapi-auth-cookie": "^6.1.1",
     "inert": "^4.0.1",
+    "joi": "^9.0.4",
     "knex": "^0.11.7",
     "mysql": "^2.11.1",
     "objection": "^0.5.5",
+    "slugify": "^1.0.2",
     "vision": "^4.1.0"
   },
   "devDependencies": {
