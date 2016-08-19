@@ -1,4 +1,2 @@
-module.exports = (request, reply) => {
-  console.log(request.server.app)
-  return reply.view('pages/index')
-}
+module.exports = (request, reply) =>
+  reply.view('pages/index')
