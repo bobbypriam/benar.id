@@ -6,8 +6,8 @@ module.exports = {
     },
   ],
   registrations: [
-    // { plugin: 'vision' },
-    // { plugin: 'inert' },
+    { plugin: 'vision' },
+    { plugin: 'inert' },
     {
       plugin: {
         register: 'good',
