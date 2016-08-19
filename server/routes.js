@@ -1,18 +1,32 @@
+const Joi = require('joi')
+
 const handlers = require('./handlers')
 
-module.exports = [{
-  method: 'GET',
-  path: '/',
-  config: {
+module.exports = [
+  {
+    method: 'GET',
+    path: '/',
     handler: handlers.getHome,
   },
-}, {
-  method: 'GET',
-  path: '/masuk',
-  config: {
+  {
+    method: 'GET',
+    path: '/masuk',
     handler: handlers.getLogin,
   },
-}]
+  {
+    method: 'POST',
+    path: '/gabung',
+    handler: handlers.postSignUp,
+    config: {
+      validate: {
+        payload: {
+          name: Joi.string().required(),
+          email: Joi.string().email().required(),
+        },
+      },
+    },
+  },
+]
 
 // module.exports = [
 //   {
