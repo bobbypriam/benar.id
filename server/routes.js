@@ -6,6 +6,12 @@ module.exports = [{
   config: {
     handler: handlers.getHome,
   },
+}, {
+  method: 'GET',
+  path: '/masuk',
+  config: {
+    handler: handlers.getLogin,
+  },
 }]
 
 // module.exports = [
