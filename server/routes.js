@@ -77,6 +77,20 @@ module.exports = [
       auth: 'session',
     },
   },
+  {
+    method: 'POST',
+    path: '/artikel',
+    handler: handlers.postArticle,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          title: Joi.string().required(),
+          url: Joi.string().uri({ scheme: ['http', 'https'] }).required(),
+        },
+      },
+    },
+  },
 ]
 
 // module.exports = [
