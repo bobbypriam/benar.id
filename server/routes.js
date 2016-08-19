@@ -3,7 +3,9 @@ const handlers = require('./handlers')
 module.exports = [{
   method: 'GET',
   path: '/',
-  handler: handlers.getHome,
+  config: {
+    handler: handlers.getHome,
+  },
 }]
 
 // module.exports = [

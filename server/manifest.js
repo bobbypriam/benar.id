@@ -8,6 +8,7 @@ module.exports = {
   registrations: [
     { plugin: 'vision' },
     { plugin: 'inert' },
+    { plugin: 'hapi-auth-cookie' },
     {
       plugin: {
         register: 'good',
