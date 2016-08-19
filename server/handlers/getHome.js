@@ -1,9 +1,9 @@
 module.exports = (request, reply) => {
+  const context = {}
+
   if (request.auth.isAuthenticated) {
-    const memberData = request.auth.credentials
-    console.log('Authenticated', memberData)
-  } else {
-    console.log('Not authenticated')
+    context.user = request.auth.credentials
   }
-  return reply.view('pages/index')
+
+  return reply.view('pages/index', context)
 }

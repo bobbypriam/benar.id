@@ -31,7 +31,6 @@ function initializeServer(server) {
 
   server.auth.strategy('session', 'cookie', {
     password: process.env.COOKIE_PASSWORD,
-    redirectTo: '/masuk',
     isSecure: process.env.NODE_ENV === 'production',
   })
 

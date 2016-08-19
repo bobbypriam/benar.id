@@ -38,6 +38,17 @@ module.exports = [
       },
     },
   },
+  {
+    method: 'GET',
+    path: '/keluar',
+    handler: handlers.getLogout,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
+  },
 ]
 
 // module.exports = [

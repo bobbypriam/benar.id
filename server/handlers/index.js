@@ -1,6 +1,7 @@
 module.exports.getArticle = require('./getArticle')
 module.exports.getHome = require('./getHome')
 module.exports.getLogin = require('./getLogin')
+module.exports.getLogout = require('./getLogout')
 module.exports.getMember = require('./getMember')
 module.exports.getReview = require('./getReview')
 module.exports.postArticle = require('./postArticle')
