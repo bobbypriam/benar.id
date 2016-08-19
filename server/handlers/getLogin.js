@@ -1,2 +1,7 @@
-module.exports = (request, reply) =>
-  reply.view('pages/login')
+module.exports = (request, reply) => {
+  if (request.auth.isAuthenticated) {
+    return reply.redirect('/')
+  }
+
+  return reply.view('pages/login')
+}

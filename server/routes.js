@@ -7,11 +7,23 @@ module.exports = [
     method: 'GET',
     path: '/',
     handler: handlers.getHome,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
   },
   {
     method: 'GET',
     path: '/masuk',
     handler: handlers.getLogin,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
   },
   {
     method: 'POST',
