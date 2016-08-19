@@ -36,6 +36,16 @@ describe('#get()', () => {
   })
 })
 
+describe('#getByEmail()', () => {
+  before(() => Member.create(members.valid[0]))
+
+  it('should return the member with the provided email', () => {
+    const email = members.valid[0].email
+    const promise = Member.getByEmail(email)
+    return promise.should.eventually.deep.property('name', members.valid[0].name)
+  })
+})
+
 describe('#update()', () => {
   let memberId
 

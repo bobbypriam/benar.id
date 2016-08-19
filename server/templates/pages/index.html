@@ -1,1 +1,11 @@
-<p>Hello world</p>
+<ul>
+  {{#each articles}}
+  <li>
+    <p>
+      <a href="/artikel/{{id}}"><strong>{{title}}</strong></a> -
+      <a href="{{url}}" target="_blank">{{url}}</a> -
+      <small>{{date_created}}</small>
+    </p>
+  </li>
+  {{/each}}
+</ul>

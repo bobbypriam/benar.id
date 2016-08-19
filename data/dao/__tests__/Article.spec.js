@@ -32,12 +32,12 @@ describe('#create()', () => {
     const promise = Article.create(articleData)
     return promise.should.be.fulfilled
   })
-  it('should reject if portal id is not provided', () => {
+  it('should fulfill if portal id is not provided', () => {
     const articleData = Object.assign({}, articles.valid[0], {
       member_id: memberId,
     })
     const promise = Article.create(articleData)
-    return promise.should.be.rejected
+    return promise.should.be.fulfilled
   })
   it('should reject if member id is not provided', () => {
     const articleData = Object.assign({}, articles.valid[0], {

@@ -11,6 +11,13 @@ module.exports.get = function get(slug) {
     .then(members => members[0])
 }
 
+module.exports.getByEmail = function getByEmail(email) {
+  return Member
+    .query()
+    .where('email', email)
+    .then(members => members[0])
+}
+
 module.exports.update = function update(id, data) {
   return Member
     .query()

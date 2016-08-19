@@ -1,7 +1,7 @@
 module.exports = (request, reply) => {
   if (request.auth.isAuthenticated) {
-    return reply.redirect('/')
+    request.cookieAuth.clear()
   }
 
-  return reply.view('pages/login')
+  return reply.redirect('/')
 }

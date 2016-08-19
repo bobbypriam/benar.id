@@ -15,7 +15,7 @@ module.exports.get = function get(id) {
 }
 
 module.exports.getAll = function getAll() {
-  return Article.query()
+  return Article.query().orderBy('id', 'desc')
 }
 
 module.exports.update = function update(id, data) {

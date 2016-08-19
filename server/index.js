@@ -24,7 +24,15 @@ function initializeServer(server) {
     isCached: false,
   })
 
-  server.app.models = dao
+  // Inject dao as models to server.app
+  // This is so that requests can access models
+  // through request.server.app.models
+  server.app.models = dao // eslint-disable-line
+
+  server.auth.strategy('session', 'cookie', {
+    password: process.env.COOKIE_PASSWORD,
+    isSecure: process.env.NODE_ENV === 'production',
+  })
 
   server.route(routes)
 
