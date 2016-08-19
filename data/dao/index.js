@@ -1,0 +1,5 @@
+module.exports.Article = require('./Article')
+module.exports.Feedback = require('./Feedback')
+module.exports.Member = require('./Member')
+module.exports.Portal = require('./Portal')
+module.exports.Review = require('./Review')

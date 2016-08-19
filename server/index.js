@@ -8,6 +8,8 @@ const routes = require('./routes')
 
 const manifest = require('./manifest')
 
+const dao = require('../data/dao')
+
 const options = {
   relativeTo: Path.resolve(__dirname),
 }
@@ -21,6 +23,8 @@ function initializeServer(server) {
     partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
     isCached: false,
   })
+
+  server.app.models = dao
 
   server.route(routes)
 
