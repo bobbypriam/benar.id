@@ -1,6 +1,8 @@
 <nav>
   <a href="/">Benar.ID</a> |
   {{#if user}}
+  <a href="/artikel/baru">Tambah Artikel</a> |
+  <a href="/anggota/{{user.slug}}">Profil</a> |
   <a href="/keluar">Keluar</a>
   {{else}}
   <a href="/masuk">Masuk</a>
