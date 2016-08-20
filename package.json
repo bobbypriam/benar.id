@@ -7,9 +7,11 @@
     "start": "node boot",
     "test": "npm run integration-test",
     "integration-test": "npm run create-test-db; npm run run-dao-test; npm run destroy-test-db",
-    "create-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/createTestDb",
+    "create-db": "node data/scripts/createDb",
+    "destroy-db": "node data/scripts/destroyDb",
+    "create-test-db": "NODE_ENV=test node data/scripts/createDb",
     "run-dao-test": "NODE_ENV=test mocha 'data/dao/__tests__/run.js'",
-    "destroy-test-db": "NODE_ENV=test node data/dao/__tests__/helpers/destroyTestDb"
+    "destroy-test-db": "NODE_ENV=test node data/scripts/destroyDb"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
   "license": "GPL-3.0",

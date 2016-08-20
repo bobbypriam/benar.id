@@ -4,10 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const knex = require('knex')
 
-const config = require('../../../../server/config')
+const config = require('../../server/config')
 const databaseName = config.database.connection.database
 
-const SCHEMA_FILEPATH = path.resolve(__dirname, '..', '..', '..', 'sql')
+const SCHEMA_FILEPATH = path.resolve(__dirname, '..', 'sql')
 const SCHEMA_FILENAME = 'schema.sql'
 const schemaFile = `${SCHEMA_FILEPATH}/${SCHEMA_FILENAME}`
 
