@@ -20,3 +20,9 @@ To start developing, follow these steps:
 5. Start hacking!
 
 Note that these commands will pull/build docker images and running `npm install` in the container if you haven't already done it before. It might take a while. Make sure you have a stable internet connection!
+
+## Testing
+
+```
+$ make test
+```
