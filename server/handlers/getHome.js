@@ -1,6 +1,5 @@
 module.exports = (request, reply) => {
   const { Article } = request.server.app.models
-
   const { assets } = request.server.app
 
   const context = {}

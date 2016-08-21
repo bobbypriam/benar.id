@@ -2,10 +2,13 @@ setup:
 	./setup.sh
 
 start:
-	docker-compose up web
+	docker-compose run --rm --service-ports web
 
 daemon:
 	docker-compose up -d web
+
+watch-client:
+	docker-compose run --rm web npm run watch-client
 
 build-containers:
 	docker-compose build

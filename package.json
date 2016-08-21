@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node boot",
+    "watch-client": "webpack --progress --colors --watch",
     "test": "npm run integration-test",
     "integration-test": "npm run create-test-db; npm run run-dao-test; npm run destroy-test-db",
     "create-db": "node data/scripts/createDb",
