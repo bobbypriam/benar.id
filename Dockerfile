@@ -2,7 +2,7 @@ FROM node:6
 
 MAINTAINER Bobby Priambodo <bobby.priambodo@gmail.com>
 
-RUN npm i -g nodemon
+RUN npm i -g nodemon elm
 
 # cache node_modules
 ADD package.json /tmp/package.json

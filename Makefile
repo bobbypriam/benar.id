@@ -2,10 +2,10 @@ setup:
 	./setup.sh
 
 start:
-	docker-compose up
+	docker-compose up web
 
 daemon:
-	docker-compose up -d
+	docker-compose up -d web
 
 build-containers:
 	docker-compose build
