@@ -41,7 +41,7 @@ function initializeServer(server) {
     path: '/{param*}',
     handler: {
       directory: {
-        path: 'static',
+        path: 'client/dist',
       },
     },
   })

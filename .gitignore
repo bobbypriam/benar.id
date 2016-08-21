@@ -42,3 +42,12 @@ static
 
 # Environments
 .env
+
+# Elm stuff
+# elm-package generated files
+elm-stuff
+# elm-repl generated files
+repl-temp-*
+
+# Any distribution or compiled code
+dist
