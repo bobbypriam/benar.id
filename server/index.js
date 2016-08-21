@@ -10,6 +10,8 @@ const manifest = require('./manifest')
 
 const dao = require('../data/dao')
 
+const assets = require('../webpack-assets.json')
+
 const options = {
   relativeTo: Path.resolve(__dirname),
 }
@@ -29,6 +31,8 @@ function initializeServer(server) {
   // This is so that requests can access models
   // through request.server.app.models
   server.app.models = dao // eslint-disable-line
+
+  server.app.assets = assets //eslint-disable-line
 
   server.auth.strategy('session', 'cookie', {
     password: process.env.COOKIE_PASSWORD,

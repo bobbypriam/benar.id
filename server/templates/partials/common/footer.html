@@ -1,1 +1,8 @@
 <p>Footer</p>
+
+{{#if script}}
+<script>
+  window.data = {{{json script.data}}}
+</script>
+<script type="text/javascript" src="{{script.file}}"></script>
+{{/if}}
