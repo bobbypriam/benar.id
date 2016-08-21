@@ -21,6 +21,7 @@ function initializeServer(server) {
     layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
     layout: 'default',
     partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
+    helpersPath: Path.resolve(__dirname, 'templates', 'helpers'),
     isCached: false,
   })
 
