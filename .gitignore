@@ -51,3 +51,6 @@ repl-temp-*
 
 # Any distribution or compiled code
 dist
+
+# Webpack generated assets
+webpack-assets.json

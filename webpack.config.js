@@ -1,6 +1,8 @@
 const path = require('path')
 const glob = require('glob')
 
+const AssetsPlugin = require('assets-webpack-plugin')
+
 const entryFilePaths = glob.sync('./client/src/pages/**/*.js')
 
 const entryFiles = {}
@@ -15,7 +17,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'client', 'dist'),
-    filename: '[name].js',
+    filename: '[name]-[hash].js',
   },
 
   resolve: {
@@ -33,4 +35,8 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new AssetsPlugin(),
+  ],
 }
