@@ -2,6 +2,7 @@ port module ArticleDetail exposing (..)
 
 import Html exposing (..)
 import Html.App as App
+import Html.Attributes exposing (..)
 
 
 main : Program Never
@@ -45,6 +46,10 @@ view {article} =
   div []
     [ h3 [] [ text article.title ]
     , p [] [ text article.url ]
+    , p []
+      [ a [ href ("/artikel/" ++ (toString article.id) ++ "/ulasan/tulis") ]
+        [ text "Tulis Ulasan" ]
+      ]
     ]
 
 
