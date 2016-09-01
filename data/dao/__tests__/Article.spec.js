@@ -9,7 +9,7 @@ const portals = require('./fixtures/portals')
 const members = require('./fixtures/members')
 const articles = require('./fixtures/articles')
 const reviews = require('./fixtures/reviews')
-const feedbacks = require('./fixtures/reviews')
+const feedbacks = require('./fixtures/feedbacks')
 
 let portalId
 let memberId
