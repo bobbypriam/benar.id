@@ -2,10 +2,6 @@
 <p>{{article.url}}</p>
 
 {{#if user}}
-<p>
-  <a href="/artikel/{{article.id}}/ulasan/tulis">Tulis ulasan</a>
-</p>
-
 <form action="/artikel/{{article.id}}/ulasan" method="post">
   <div>
     <label for="rating">Anda menilai artikel ini (1-10): </label>
