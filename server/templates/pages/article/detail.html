@@ -1,5 +1,13 @@
 <h3>{{article.title}}</h3>
 <p>{{article.url}}</p>
+
+{{#if user}}
 <p>
   <a href="/artikel/{{article.id}}/ulasan/tulis">Tulis ulasan</a>
 </p>
+
+<form action="/artikel/{{article.id}}/ulasan" method="post">
+  <textarea name="content" rows="8" cols="40"></textarea>
+  <input type="submit" value="Kirim" />
+</form>
+{{/if}}

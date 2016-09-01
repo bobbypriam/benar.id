@@ -14,6 +14,17 @@ module.exports = [
       },
     },
   },
+  {
+    method: 'GET',
+    path: '/artikel/{id}',
+    handler: handlers.getArticle,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
+  },
 
   /**
    * Auth routes
@@ -90,12 +101,6 @@ module.exports = [
         },
       },
     },
-  },
-  {
-    method: 'GET',
-    path: '/artikel/{id}',
-    handler: handlers.getArticle,
-    config: {},
   },
 ]
 
