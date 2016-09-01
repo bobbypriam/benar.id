@@ -25,6 +25,17 @@ module.exports = [
       },
     },
   },
+  {
+    method: 'GET',
+    path: '/artikel/{id}/ulasan/{reviewerSlug}',
+    handler: handlers.getReview,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
+  },
 
   /**
    * Auth routes

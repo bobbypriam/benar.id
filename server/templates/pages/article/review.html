@@ -1,0 +1,21 @@
+<h3><a href="/artikel/{{article.id}}">{{article.title}}</a></h3>
+<p>{{article.url}}</p>
+
+<h4>Ulasan oleh {{review.member.name}}</h4>
+
+<div>Rating: <strong>{{review.rating}}/10</strong></div>
+
+<div>
+  {{review.content}}
+</div>
+
+{{#if user}}
+<h4>Feedback</h4>
+
+<form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/feedback" method="post">
+  <div>
+    <textarea name="content" rows="8" cols="40" placeholder="Beri feedback..."></textarea>
+  </div>
+  <input type="submit" value="Kirim" />
+</form>
+{{/if}}
