@@ -1,5 +1,5 @@
 <h3>{{article.title}}</h3>
-<p>{{article.url}}</p>
+<p><a href="{{article.url}}" target="_blank" rel="noopener noreferrer">{{article.url}}</a></p>
 
 {{#if user}}
 <form action="/artikel/{{article.id}}/ulasan" method="post">
