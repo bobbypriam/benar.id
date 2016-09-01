@@ -10,6 +10,7 @@ module.exports.create = function create(articleData) {
 module.exports.get = function get(id) {
   return Article
     .query()
+    .eager('reviews.member')
     .where('id', id)
     .then(articles => articles[0])
 }
