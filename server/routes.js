@@ -102,6 +102,19 @@ module.exports = [
       },
     },
   },
+  {
+    method: 'POST',
+    path: '/artikel/{id}/ulasan',
+    handler: handlers.postReview,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          content: Joi.string().required(),
+        },
+      },
+    },
+  },
 ]
 
 // module.exports = [
