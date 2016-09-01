@@ -7,7 +7,13 @@
 </p>
 
 <form action="/artikel/{{article.id}}/ulasan" method="post">
-  <textarea name="content" rows="8" cols="40"></textarea>
+  <div>
+    <label for="rating">Anda menilai artikel ini (1-10): </label>
+    <input type="number" name="rating" min="1" max="10" placeholder="8" />
+  </div>
+  <div>
+    <textarea name="content" rows="8" cols="40" placeholder="Review..."></textarea>
+  </div>
   <input type="submit" value="Kirim" />
 </form>
 {{/if}}
@@ -17,7 +23,9 @@
 <ul>
   {{#each article.reviews}}
   <li>
-    <a href="/artikel/{{../article.id}}/ulasan/{{member.name_slug}}">{{member.name}} - {{content}}</a>
+    <a href="/artikel/{{../article.id}}/ulasan/{{member.name_slug}}">
+      {{member.name}} - {{rating}}/10 - {{content}}
+    </a>
   </li>
   {{/each}}
 </ul>

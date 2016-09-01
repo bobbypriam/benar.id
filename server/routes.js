@@ -111,6 +111,9 @@ module.exports = [
       validate: {
         payload: {
           content: Joi.string().required(),
+          rating: Joi
+            .number().integer().min(1).max(10)
+            .required(),
         },
       },
     },
