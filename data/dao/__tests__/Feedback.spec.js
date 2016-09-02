@@ -15,7 +15,7 @@ let articleId
 let memberId
 let feedbackId
 
-before(() =>
+beforeEach(() =>
   Promise.all([
     Portal.create(portals.valid[0]),
     Member.create(members.valid[0]),
@@ -69,7 +69,7 @@ describe('#update()', () => {
   })
 })
 
-after(() =>
+afterEach(() =>
   Feedback.clear()
     .then(() => Review.clear())
     .then(() => Article.clear())

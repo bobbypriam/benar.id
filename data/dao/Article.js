@@ -130,6 +130,9 @@ module.exports.getReviewFeedbacks = function getReviewFeedbacks(id, reviewerSlug
 
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
-module.exports.clear = function clear() {
+module.exports.clear = function clear(ids) {
+  if (ids) {
+    return Article.query().whereIn('id', ids).del()
+  }
   return Article.query().del()
 }

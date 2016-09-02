@@ -33,6 +33,9 @@ module.exports.remove = function remove(id) {
 
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
-module.exports.clear = function clear() {
+module.exports.clear = function clear(ids) {
+  if (ids) {
+    return Member.query().whereIn('id', ids).del()
+  }
   return Member.query().del()
 }

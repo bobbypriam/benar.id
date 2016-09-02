@@ -62,12 +62,14 @@ describe('#create()', () => {
     const promise = Article.create(articleData)
     return promise.should.be.rejected
   })
+
+  afterEach(() => Article.clear())
 })
 
 describe('#get()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article.create(Object.assign({}, articles.valid[0], {
       portal_id: portalId,
       member_id: memberId,
@@ -78,10 +80,12 @@ describe('#get()', () => {
     const promise = Article.get(articleId)
     return promise.should.eventually.deep.property('title', articles.valid[0].title)
   })
+
+  afterEach(() => Article.clear([articleId]))
 })
 
 describe('#getAll()', () => {
-  before(() => {
+  beforeEach(() => {
     const promises = articles.valid.map(article => Article.create(Object.assign({}, article, {
       portal_id: portalId,
       member_id: memberId,
@@ -93,12 +97,14 @@ describe('#getAll()', () => {
     const promise = Article.getAll()
     return promise.should.eventually.have.length(articles.valid.length)
   })
+
+  afterEach(() => Article.clear())
 })
 
 describe('#update()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article.create(Object.assign({}, articles.valid[0], {
       portal_id: portalId,
       member_id: memberId,
@@ -112,12 +118,14 @@ describe('#update()', () => {
     const promise = Article.update(articleId, newData)
     return promise.should.eventually.deep.property('title', newData.title)
   })
+
+  afterEach(() => Article.clear([articleId]))
 })
 
 describe('#remove()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article.create(Object.assign({}, articles.valid[0], {
       portal_id: portalId,
       member_id: memberId,
@@ -128,12 +136,14 @@ describe('#remove()', () => {
     const promise = Article.remove(articleId)
     return promise.should.eventually.equal(1)
   })
+
+  afterEach(() => Article.clear([articleId]))
 })
 
 describe('#writeReview()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article.create(Object.assign({}, articles.valid[0], {
       portal_id: portalId,
       member_id: memberId,
@@ -147,24 +157,47 @@ describe('#writeReview()', () => {
     const promise = Article.writeReview(articleId, reviewData)
     return promise.should.be.fulfilled
   })
+
+  it('should reject if member has written an entry', () => {
+    const reviewData = Object.assign({}, reviews.valid[0], {
+      member_id: memberId,
+    })
+
+    const promise = Article.writeReview(articleId, reviewData)
+      .then(() => Article.writeReview(articleId, reviewData))
+
+    return promise.should.be.rejected
+  })
+
+  afterEach(() =>
+    Review.clear()
+      .then(() => Article.clear([articleId]))
+  )
 })
 
 describe('#getReviews()', () => {
   let articleId
+  let otherMemberId
 
-  before(() =>
-    Article
-      .create(Object.assign({}, articles.valid[0], {
+  beforeEach(() =>
+    // Create other member
+    Member.create(members.valid[1])
+      .then(createdMember => { otherMemberId = createdMember.id })
+      // Create article reviews
+      .then(() => Article.create(Object.assign({}, articles.valid[0], {
         portal_id: portalId,
         member_id: memberId,
-      }))
+      })))
       .then(createdArticle => { articleId = createdArticle.id })
       .then(() => {
-        const promises = reviews.valid.map(review =>
-          Article.writeReview(articleId, Object.assign({}, review, {
+        const promises = [
+          Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
             member_id: memberId,
-          }))
-        )
+          })),
+          Article.writeReview(articleId, Object.assign({}, reviews.valid[1], {
+            member_id: otherMemberId,
+          })),
+        ]
         return Promise.all(promises)
       })
   )
@@ -173,36 +206,39 @@ describe('#getReviews()', () => {
     const promise = Article.getReviews(articleId)
     return promise.should.eventually.have.length(reviews.valid.length)
   })
+
+  afterEach(() =>
+    Review.clear()
+      .then(() => Article.clear([articleId]))
+      .then(() => Member.clear([otherMemberId]))
+  )
 })
 
 describe('#getReview()', () => {
   let articleId
   let otherMemberId
 
-  before(() =>
-    Promise.all([
-      // Create other member
-      Member.create(members.valid[1])
-        .then(createdMember => { otherMemberId = createdMember.id }),
+  beforeEach(() =>
+    // Create other member
+    Member.create(members.valid[1])
+      .then(createdMember => { otherMemberId = createdMember.id })
       // Create article reviews
-      Article
-        .create(Object.assign({}, articles.valid[0], {
-          portal_id: portalId,
-          member_id: memberId,
-        }))
-        .then(createdArticle => { articleId = createdArticle.id })
-        .then(() => {
-          const promises = [
-            Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
-              member_id: memberId,
-            })),
-            Article.writeReview(articleId, Object.assign({}, reviews.valid[1], {
-              member_id: otherMemberId,
-            })),
-          ]
-          return Promise.all(promises)
-        }),
-    ])
+      .then(() => Article.create(Object.assign({}, articles.valid[0], {
+        portal_id: portalId,
+        member_id: memberId,
+      })))
+      .then(createdArticle => { articleId = createdArticle.id })
+      .then(() => {
+        const promises = [
+          Article.writeReview(articleId, Object.assign({}, reviews.valid[0], {
+            member_id: memberId,
+          })),
+          Article.writeReview(articleId, Object.assign({}, reviews.valid[1], {
+            member_id: otherMemberId,
+          })),
+        ]
+        return Promise.all(promises)
+      })
   )
 
   it('should return a review based on the reviewer\'s slug', () => {
@@ -216,12 +252,18 @@ describe('#getReview()', () => {
     const promise = Article.getReview(articleId, slug)
     return promise.should.eventually.be.null
   })
+
+  afterEach(() =>
+    Review.clear()
+      .then(() => Article.clear([articleId]))
+      .then(() => Member.clear([otherMemberId]))
+  )
 })
 
 describe('#updateReview()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article
       .create(Object.assign({}, articles.valid[0], {
         portal_id: portalId,
@@ -241,12 +283,17 @@ describe('#updateReview()', () => {
     const promise = Article.updateReview(articleId, slug, newReviewData)
     return promise.should.eventually.deep.property('content', newReviewData.content)
   })
+
+  afterEach(() =>
+    Review.clear()
+      .then(() => Article.clear([articleId]))
+  )
 })
 
 describe('#removeReview()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article
       .create(Object.assign({}, articles.valid[0], {
         portal_id: portalId,
@@ -265,12 +312,17 @@ describe('#removeReview()', () => {
     const promise = Article.removeReview(articleId, slug)
     return promise.should.eventually.equal(1)
   })
+
+  afterEach(() =>
+    Review.clear()
+      .then(() => Article.clear([articleId]))
+  )
 })
 
 describe('#writeReviewFeedback()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article
       .create(Object.assign({}, articles.valid[0], {
         portal_id: portalId,
@@ -292,12 +344,18 @@ describe('#writeReviewFeedback()', () => {
     const promise = Article.writeReviewFeedback(articleId, slug, feedbackData)
     return promise.should.be.fulfilled
   })
+
+  afterEach(() =>
+    Feedback.clear()
+      .then(() => Review.clear())
+      .then(() => Article.clear([articleId]))
+  )
 })
 
 describe('#getReviewFeedbacks()', () => {
   let articleId
 
-  before(() =>
+  beforeEach(() =>
     Article
       .create(Object.assign({}, articles.valid[0], {
         portal_id: portalId,
@@ -328,13 +386,13 @@ describe('#getReviewFeedbacks()', () => {
     const promise = Article.getReviewFeedbacks(articleId, slug)
     return promise.should.eventually.have.length(feedbacks.valid.length)
   })
-})
 
-afterEach(() =>
-  Feedback.clear()
-    .then(() => Review.clear())
-    .then(() => Article.clear())
-)
+  afterEach(() =>
+    Feedback.clear()
+      .then(() => Review.clear())
+      .then(() => Article.clear([articleId]))
+  )
+})
 
 after(() => Promise.all([
   Portal.clear(),
