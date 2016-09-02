@@ -14,7 +14,7 @@
 {{#if user}}
 <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/feedback" method="post">
   <div>
-    <textarea name="content" rows="8" cols="40" placeholder="Beri feedback..."></textarea>
+    <textarea name="content" rows="3" cols="40" placeholder="Beri feedback..."></textarea>
   </div>
   <input type="submit" value="Kirim" />
 </form>
@@ -23,7 +23,7 @@
 <ul>
   {{#each review.feedbacks}}
   <li>
-    <p>{{member.name}} - {{content}}</p>
+    <p>{{member.name}} - {{content}} membalas {{parent_feedback_id}}</p>
     {{#if ../user}}
     <p>
       <form action="/artikel/{{../article.id}}/ulasan/{{../review.member.name_slug}}/feedback/{{id}}/reply" method="post">
