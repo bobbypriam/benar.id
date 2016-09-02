@@ -129,6 +129,19 @@ module.exports = [
       },
     },
   },
+  {
+    method: 'POST',
+    path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
+    handler: handlers.postFeedback,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          content: Joi.string().required(),
+        },
+      },
+    },
+  },
 ]
 
 // module.exports = [

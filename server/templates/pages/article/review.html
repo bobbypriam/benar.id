@@ -9,9 +9,9 @@
   {{review.content}}
 </div>
 
-{{#if user}}
 <h4>Feedback</h4>
 
+{{#if user}}
 <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/feedback" method="post">
   <div>
     <textarea name="content" rows="8" cols="40" placeholder="Beri feedback..."></textarea>
@@ -19,3 +19,21 @@
   <input type="submit" value="Kirim" />
 </form>
 {{/if}}
+
+<ul>
+  {{#each review.feedbacks}}
+  <li>
+    <p>{{member.name}} - {{content}}</p>
+    {{#if ../user}}
+    <p>
+      <form action="/artikel/{{../article.id}}/ulasan/{{../review.member.name_slug}}/feedback/{{id}}/reply" method="post">
+        <div>
+          <textarea name="content" rows="3" cols="40" placeholder="Balas..."></textarea>
+        </div>
+        <input type="submit" value="Kirim" />
+      </form>
+    </p>
+    {{/if}}
+  </li>
+  {{/each}}
+</ul>
