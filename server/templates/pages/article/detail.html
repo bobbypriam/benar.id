@@ -1,20 +1,24 @@
 <h3>{{article.title}}</h3>
 <p><a href="{{article.url}}" target="_blank" rel="noopener noreferrer">{{article.url}}</a></p>
 
-{{#if user}}
-<form action="/artikel/{{article.id}}/ulasan" method="post">
-  <div>
-    <label for="rating">Anda menilai artikel ini (1-10): </label>
-    <input type="number" name="rating" min="1" max="10" placeholder="8" />
-  </div>
-  <div>
-    <textarea name="content" rows="8" cols="40" placeholder="Review..."></textarea>
-  </div>
-  <input type="submit" value="Kirim" />
-</form>
-{{/if}}
-
 <h4>Ulasan</h4>
+
+{{#if user}}
+  {{#if user.reviewed}}
+  <p>Anda sudah menulis ulasan untuk artikel ini.</p>
+  {{else}}
+  <form action="/artikel/{{article.id}}/ulasan" method="post">
+    <div>
+      <label for="rating">Anda menilai artikel ini (1-10): </label>
+      <input type="number" name="rating" min="1" max="10" placeholder="8" />
+    </div>
+    <div>
+      <textarea name="content" rows="8" cols="40" placeholder="Review..."></textarea>
+    </div>
+    <input type="submit" value="Kirim" />
+  </form>
+  {{/if}}
+{{/if}}
 
 <ul>
   {{#each article.reviews}}
