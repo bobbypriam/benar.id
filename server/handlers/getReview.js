@@ -26,6 +26,13 @@ module.exports = (request, reply) => {
         .filter(
           vote => vote.member_id === context.user.id
         ).length > 0
+
+      context.user.downvoted = context.review.downvotes
+        .filter(
+          vote => vote.member_id === context.user.id
+        ).length > 0
+
+      context.user.haveNotVoted = !context.user.upvoted && !context.user.downvoted
     }
 
     return reply.view('pages/article/review', context)

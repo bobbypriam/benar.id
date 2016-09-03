@@ -1,7 +1,7 @@
-<h3><a href="/artikel/{{article.id}}">{{article.title}}</a></h3>
+<h3>Ulasan untuk <a href="/artikel/{{article.id}}">{{article.title}}</a></h3>
 <p><a href="{{article.url}}" target="_blank" rel="noopener noreferrer">{{article.url}}</a></p>
 
-<h4>Ulasan oleh {{review.member.name}}</h4>
+<h4>oleh {{review.member.name}}</h4>
 
 <div>Rating: <strong>{{review.rating}}/10</strong></div>
 
@@ -10,20 +10,31 @@
 </div>
 
 <div>{{review.upvotes.length}} upvote</div>
-
+<div>{{review.downvotes.length}} downvote</div>
 
 {{#if user}}
 <h4>Action</h4>
 
 <div>
   {{#unless user.ownReview}}
+
     {{#if user.upvoted}}
     <p>Anda telah meng-<em>upvote</em> ulasan ini.</p>
     <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/revoke-upvote" method="post">
       <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Batal" />
     </form>
-    {{else}}
+    {{/if}}
+
+    {{#if user.downvoted}}
+    <p>Anda telah meng-<em>downvote</em> ulasan ini.</p>
+    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/revoke-downvote" method="post">
+      <input type="hidden" name="reviewId" value={{review.id}} />
+      <input type="submit" value="Batal" />
+    </form>
+    {{/if}}
+
+    {{#if user.haveNotVoted}}
     <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
       <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Upvote" />
@@ -32,8 +43,8 @@
       <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Downvote" />
     </form>
-    <a href="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/report">Laporkan</a>
     {{/if}}
+
   {{/unless}}
 </div>
 {{/if}}
