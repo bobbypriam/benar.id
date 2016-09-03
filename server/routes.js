@@ -170,6 +170,19 @@ module.exports = [
   },
   {
     method: 'POST',
+    path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-downvote',
+    handler: handlers.postRevokeDownvoteReview,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          reviewId: Joi.number().integer().required(),
+        },
+      },
+    },
+  },
+  {
+    method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
     handler: handlers.postFeedback,
     config: {
