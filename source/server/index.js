@@ -19,11 +19,11 @@ const options = {
 function initializeServer(server) {
   server.views({
     engines: { html: Handlebars },
-    path: Path.resolve(__dirname, 'templates'),
-    layoutPath: Path.resolve(__dirname, 'templates', 'layout'),
+    path: Path.resolve(__dirname, 'views'),
+    layoutPath: Path.resolve(__dirname, 'views', 'templates', 'layout'),
     layout: 'default',
-    partialsPath: Path.resolve(__dirname, 'templates', 'partials'),
-    helpersPath: Path.resolve(__dirname, 'templates', 'helpers'),
+    partialsPath: Path.resolve(__dirname, 'views', 'templates', 'partials'),
+    helpersPath: Path.resolve(__dirname, 'views', 'templates', 'helpers'),
     isCached: false,
   })
 
