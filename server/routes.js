@@ -144,6 +144,19 @@ module.exports = [
   },
   {
     method: 'POST',
+    path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-upvote',
+    handler: handlers.postRevokeUpvoteReview,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          reviewId: Joi.number().integer().required(),
+        },
+      },
+    },
+  },
+  {
+    method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
     handler: handlers.postFeedback,
     config: {

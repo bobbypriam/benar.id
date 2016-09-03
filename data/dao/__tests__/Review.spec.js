@@ -57,6 +57,33 @@ describe('#upvote()', () => {
   )
 })
 
+describe('#revokeUpvote()', () => {
+  let reviewId
+
+  beforeEach(() =>
+    Article.writeReview(
+      articleId,
+      Object.assign({}, reviews.valid[0], {
+        member_id: memberId,
+      })
+    )
+      .then(createdReview => {
+        reviewId = createdReview.id
+        return Review.upvote(reviewId, memberId)
+      })
+  )
+
+  it('should revoke the upvote', () => {
+    const promise = Review.revokeUpvote(reviewId, memberId)
+    return promise.should.eventually.equal(1)
+  })
+
+  afterEach(() =>
+    ReviewVote.clear()
+    .then(() => Review.clear())
+  )
+})
+
 after(() =>
   Article.clear()
     .then(() => Promise.all([

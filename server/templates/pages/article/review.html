@@ -18,9 +18,10 @@
 <div>
   {{#unless user.ownReview}}
     {{#if user.upvoted}}
-    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/cancel-upvote" method="post">
+    <p>Anda telah meng-<em>upvote</em> ulasan ini.</p>
+    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/revoke-upvote" method="post">
       <input type="hidden" name="reviewId" value={{review.id}} />
-      <input type="submit" value="Upvoted" />
+      <input type="submit" value="Batal" />
     </form>
     {{else}}
     <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
