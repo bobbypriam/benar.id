@@ -13,7 +13,7 @@ module.exports.upvote = function upvote(reviewId, memberId) {
     })
 }
 
-module.exports.revokeUpvote = function upvote(reviewId, memberId) {
+module.exports.revokeUpvote = function revokeUpvote(reviewId, memberId) {
   return ReviewVote
     .query()
     .where('review_id', reviewId)
@@ -31,6 +31,16 @@ module.exports.downvote = function downvote(reviewId, memberId) {
       member_id: memberId,
       vote_type_id: reviewVoteTypes.DOWNVOTE,
     })
+}
+
+module.exports.revokeDownvote = function revokeDownvote(reviewId, memberId) {
+  return ReviewVote
+    .query()
+    .where('review_id', reviewId)
+    .where('member_id', memberId)
+    .where('vote_type_id', reviewVoteTypes.DOWNVOTE)
+    .limit(1)
+    .del()
 }
 
 // CAUTION: DON'T USE THIS ON APP CODE
