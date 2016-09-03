@@ -16,6 +16,11 @@ module.exports = (request, reply) => {
   ]).then(results => {
     context.article = results[0]
     context.review = results[1]
+
+    if (context.user) {
+      context.user.ownReview = context.user.id === context.review.member.id
+    }
+
     return reply.view('pages/article/review', context)
   })
 }

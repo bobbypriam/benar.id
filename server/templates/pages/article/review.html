@@ -9,6 +9,21 @@
   {{review.content}}
 </div>
 
+<div>
+  {{#if user}}
+    {{#unless user.ownReview}}
+    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
+      <input type="submit" value="Upvote" />
+    </form>
+    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/downvote" method="post">
+      <input type="submit" value="Downvote" />
+    </form>
+    |
+    <a href="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/report">Laporkan</a>
+    {{/unless}}
+  {{/if}}
+</div>
+
 <h4>Feedback</h4>
 
 {{#if user}}
