@@ -3,6 +3,7 @@
   "version": "0.3.1",
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
+  "repository": "https://github.com/bobbypriambodo/benar.id.git",
   "scripts": {
     "start": "node boot",
     "watch-client": "webpack --progress --colors --watch",
