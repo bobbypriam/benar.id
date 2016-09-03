@@ -13,12 +13,13 @@
   {{#if user}}
     {{#unless user.ownReview}}
     <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
+      <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Upvote" />
     </form>
     <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/downvote" method="post">
+      <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Downvote" />
     </form>
-    |
     <a href="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/report">Laporkan</a>
     {{/unless}}
   {{/if}}

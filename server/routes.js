@@ -131,6 +131,19 @@ module.exports = [
   },
   {
     method: 'POST',
+    path: '/artikel/{id}/ulasan/{reviewerSlug}/upvote',
+    handler: handlers.postUpvoteReview,
+    config: {
+      auth: 'session',
+      validate: {
+        payload: {
+          reviewId: Joi.number().integer().required(),
+        },
+      },
+    },
+  },
+  {
+    method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
     handler: handlers.postFeedback,
     config: {
