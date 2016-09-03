@@ -8,9 +8,9 @@ const routes = require('./routes')
 
 const manifest = require('./manifest')
 
-const dao = require('../data/dao')
+const dao = require('./data/dao')
 
-const assets = require('../webpack-assets.json')
+const assets = require('../../webpack-assets.json')
 
 const options = {
   relativeTo: Path.resolve(__dirname),
@@ -46,7 +46,7 @@ function initializeServer(server) {
     path: '/{param*}',
     handler: {
       directory: {
-        path: 'client/dist',
+        path: 'dist',
       },
     },
   })
