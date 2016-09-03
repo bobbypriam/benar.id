@@ -84,6 +84,35 @@ describe('#revokeUpvote()', () => {
   )
 })
 
+describe('#downvote()', () => {
+  let reviewId
+
+  beforeEach(() =>
+    Article.writeReview(
+      articleId,
+      Object.assign({}, reviews.valid[0], {
+        member_id: memberId,
+      })
+    ).then(createdReview => { reviewId = createdReview.id })
+  )
+
+  it('should downvote the review', () => {
+    const promise = Review.downvote(reviewId, memberId)
+    return promise.should.be.fulfilled
+  })
+
+  it('shouldn\'t allow downvoting twice', () => {
+    const promise = Review.downvote(reviewId, memberId)
+      .then(() => Review.downvote(reviewId, memberId))
+    return promise.should.be.rejected
+  })
+
+  afterEach(() =>
+    ReviewVote.clear()
+    .then(() => Review.clear())
+  )
+})
+
 after(() =>
   Article.clear()
     .then(() => Promise.all([

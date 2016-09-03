@@ -23,6 +23,16 @@ module.exports.revokeUpvote = function upvote(reviewId, memberId) {
     .del()
 }
 
+module.exports.downvote = function downvote(reviewId, memberId) {
+  return ReviewVote
+    .query()
+    .insert({
+      review_id: reviewId,
+      member_id: memberId,
+      vote_type_id: reviewVoteTypes.DOWNVOTE,
+    })
+}
+
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
 module.exports.clear = function clear() {
