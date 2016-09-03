@@ -9,21 +9,26 @@
   {{review.content}}
 </div>
 
+<div>{{review.upvotes.length}} upvote</div>
+
+
+{{#if user}}
+<h4>Action</h4>
+
 <div>
-  {{#if user}}
-    {{#unless user.ownReview}}
-    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
-      <input type="hidden" name="reviewId" value={{review.id}} />
-      <input type="submit" value="Upvote" />
-    </form>
-    <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/downvote" method="post">
-      <input type="hidden" name="reviewId" value={{review.id}} />
-      <input type="submit" value="Downvote" />
-    </form>
-    <a href="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/report">Laporkan</a>
-    {{/unless}}
-  {{/if}}
+  {{#unless user.ownReview}}
+  <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
+    <input type="hidden" name="reviewId" value={{review.id}} />
+    <input type="submit" value="Upvote" />
+  </form>
+  <form action="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/downvote" method="post">
+    <input type="hidden" name="reviewId" value={{review.id}} />
+    <input type="submit" value="Downvote" />
+  </form>
+  <a href="/artikel/{{article.id}}/ulasan/{{review.member.name_slug}}/report">Laporkan</a>
+  {{/unless}}
 </div>
+{{/if}}
 
 <h4>Feedback</h4>
 

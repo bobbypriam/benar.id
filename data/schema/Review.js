@@ -1,8 +1,17 @@
 const Model = require('./BaseModel')
 
+const voteTypes = {
+  UPVOTE: 1,
+  DOWNVOTE: 2,
+}
+
 class Review extends Model {
   static get tableName() {
     return 'review'
+  }
+
+  static get voteTypes() {
+    return voteTypes
   }
 
   static get relationMappings() {
@@ -31,9 +40,23 @@ class Review extends Model {
           to: 'feedback.review_id',
         },
       },
-      votes: {
+      upvotes: {
         relation: Model.HasManyRelation,
         modelClass: `${__dirname}/ReviewVote`,
+        filter: {
+          vote_type_id: voteTypes.UPVOTE,
+        },
+        join: {
+          from: 'review.id',
+          to: 'review_vote.review_id',
+        },
+      },
+      downvotes: {
+        relation: Model.HasManyRelation,
+        modelClass: `${__dirname}/ReviewVote`,
+        filter: {
+          vote_type_id: voteTypes.DOWNVOTE,
+        },
         join: {
           from: 'review.id',
           to: 'review_vote.review_id',

@@ -53,7 +53,7 @@ module.exports.getReview = function getReview(id, reviewerSlug) {
     .where('name_slug', reviewerSlug)
   return Review
     .query()
-    .eager('[member, feedbacks.member]')
+    .eager('[member, feedbacks.member, upvotes]')
     .where('article_id', id)
     .where('member_id', memberWithSlug)
     .then(result => result[0] || null)
