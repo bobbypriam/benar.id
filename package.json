@@ -1,6 +1,6 @@
 {
   "name": "benar.id",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Crowdsourced, collaborative Indonesian news rating app",
   "main": "index.js",
   "scripts": {
