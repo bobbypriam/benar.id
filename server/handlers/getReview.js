@@ -21,6 +21,13 @@ module.exports = (request, reply) => {
       context.user.ownReview = context.user.id === context.review.member.id
     }
 
+    if (!context.user.ownReview) {
+      context.user.upvoted = context.review.upvotes
+        .filter(
+          vote => vote.member_id === context.user.id
+        ).length > 0
+    }
+
     return reply.view('pages/article/review', context)
   })
 }
