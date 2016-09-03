@@ -1,4 +1,4 @@
-News Review
+Benar.ID
 =============
 
 Crowdsourced, collaborative Indonesian news rating app.
@@ -15,9 +15,11 @@ To start developing, follow these steps:
 
 1. Clone this repo.
 2. Create a `.env` file. Use the provided `.env.default` as an example.
-3. Run `make setup`. This will create the tables on the database.
-4. Run `make start`. This will run `docker-compose up`.
-5. Start hacking!
+3. Run `make build-containers`. This will build the Docker containers. Might take a while; so get your cup of tea! (Or coffee, if you're that kind of person.)
+4. Run `make setup`. This will install NPM packages, Elm packages, and setup a development database. You'd also need your cup for this.
+5. Run `make start`. This will start the service.
+6. Open up a new terminal and run `make watch-client`. This will run webpack and watch the client files.
+5. Open up your browser at [http://localhost:7000](http://localhost:7000) and start hacking!
 
 Note that these commands will pull/build docker images and running `npm install` in the container if you haven't already done it before. It might take a while. Make sure you have a stable internet connection!
 
