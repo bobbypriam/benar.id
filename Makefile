@@ -16,6 +16,9 @@ build-containers:
 test:
 	docker-compose run --rm web ./bin/test.sh
 
+lint:
+	docker-compose run --rm web npm run lint -s
+
 stop:
 	docker-compose stop
 
