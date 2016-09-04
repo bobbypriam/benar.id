@@ -40,7 +40,7 @@
     "chai-as-promised": "^5.3.0",
     "elm-webpack-loader": "^3.0.6",
     "eslint": "^3.4.0",
-    "eslint-config-airbnb-base": "^4.0.2",
+    "eslint-config-airbnb-base": "^5.0.3",
     "eslint-plugin-import": "^1.14.0",
     "glob": "^7.0.6",
     "mocha": "^3.0.1",
