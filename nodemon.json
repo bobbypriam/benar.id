@@ -1,0 +1,17 @@
+{
+  "ignore": [
+    "source/client/*",
+
+    "dist/*",
+    "*.elm-build.js",
+
+    "webpack.config.js",
+
+    "elm-stuff/*"
+  ],
+  "watch": [
+    "source/server",
+    "webpack-assets.json"
+  ],
+  "ext": "js json"
+}
