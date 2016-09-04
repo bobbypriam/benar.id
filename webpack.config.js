@@ -31,7 +31,7 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        loader: 'elm-webpack?verbose=true&warn=true',
+        loader: 'elm-webpack?verbose=true&warn=true&output=.elm-build.js',
       },
     ],
   },
