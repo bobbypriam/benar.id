@@ -19,7 +19,7 @@
   "license": "GPL-3.0",
   "dependencies": {
     "dotenv": "^2.0.0",
-    "glue": "^3.3.0",
+    "glue": "^4.0.0",
     "good": "^7.0.2",
     "good-console": "^6.1.2",
     "good-squeeze": "^4.0.0",
