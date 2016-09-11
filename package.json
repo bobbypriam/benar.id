@@ -17,7 +17,7 @@
     "destroy-test-db": "NODE_ENV=test node source/server/data/scripts/destroyDb"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
-  "license": "GPL-3.0",
+  "license": "AGPL-3.0",
   "dependencies": {
     "dotenv": "^2.0.0",
     "glue": "^4.0.0",
