@@ -3,6 +3,8 @@ Benar.ID
 
 Crowdsourced, collaborative Indonesian news rating app.
 
+This is still a work in progress!
+
 ## Developing
 
 Thanks for wanting to contribute! This section will explain how to get up and running on developing this project.
@@ -28,3 +30,7 @@ Note that these commands will pull/build docker images and running `npm install`
 ```
 $ make test
 ```
+
+## License
+
+Unless otherwise stated, all the code under the `source/` directory is distributed under the terms of the GNU Affero General Public License 3.0 (AGPL-3.0). See [LICENSE](LICENSE) for details.
