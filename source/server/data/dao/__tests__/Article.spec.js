@@ -13,13 +13,17 @@ const feedbacks = require('./fixtures/feedbacks')
 
 let portalId
 let memberId
+let memberSlug
 
 before(() =>
   Promise.all([
     Portal.create(portals.valid[0])
       .then(createdPortal => { portalId = createdPortal.id }),
     Member.create(members.valid[0])
-      .then(createdMember => { memberId = createdMember.id }),
+      .then(createdMember => {
+        memberId = createdMember.id
+        memberSlug = createdMember.name_slug
+      }),
   ])
 )
 
@@ -242,7 +246,7 @@ describe('#getReview()', () => {
   )
 
   it('should return a review based on the reviewer\'s slug', () => {
-    const slug = members.valid[0].name_slug
+    const slug = memberSlug
     const promise = Article.getReview(articleId, slug)
     return promise.should.eventually.deep.property('content', reviews.valid[0].content)
   })
@@ -278,7 +282,7 @@ describe('#updateReview()', () => {
   )
 
   it('should update a review based on the reviewer\'s slug', () => {
-    const slug = members.valid[0].name_slug
+    const slug = memberSlug
     const newReviewData = { content: '<p>New Content</p>' }
     const promise = Article.updateReview(articleId, slug, newReviewData)
     return promise.should.eventually.deep.property('content', newReviewData.content)
@@ -308,7 +312,7 @@ describe('#removeReview()', () => {
   )
 
   it('should delete review with given articleId and reviewerSlug', () => {
-    const slug = members.valid[0].name_slug
+    const slug = memberSlug
     const promise = Article.removeReview(articleId, slug)
     return promise.should.eventually.equal(1)
   })
@@ -337,7 +341,7 @@ describe('#writeReviewFeedback()', () => {
   )
 
   it('should add a feedback to a review', () => {
-    const slug = members.valid[0].name_slug
+    const slug = memberSlug
     const feedbackData = Object.assign({}, feedbacks.valid[0], {
       member_id: memberId,
     })
@@ -371,7 +375,7 @@ describe('#getReviewFeedbacks()', () => {
         const promises = feedbacks.valid.map(feedback =>
           Article.writeReviewFeedback(
             articleId,
-            members.valid[0].name_slug,
+            memberSlug,
             Object.assign({}, feedback, {
               member_id: memberId,
             })
@@ -382,7 +386,7 @@ describe('#getReviewFeedbacks()', () => {
   )
 
   it('should get all feedbacks for a review', () => {
-    const slug = members.valid[0].name_slug
+    const slug = memberSlug
     const promise = Article.getReviewFeedbacks(articleId, slug)
     return promise.should.eventually.have.length(feedbacks.valid.length)
   })
