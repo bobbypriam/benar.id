@@ -2,7 +2,8 @@ require('./helpers/common').chai.should()
 
 const slugify = require('slugify')
 
-const Member = require('../Member')
+const Member = require('../../../../source/server/data/dao/Member')
+
 const members = require('./fixtures/members')
 
 describe('#create()', () => {
