@@ -1,10 +1,11 @@
 require('./helpers/common').chai.should()
 
-const Portal = require('../Portal')
-const Member = require('../Member')
-const Article = require('../Article')
-const Review = require('../Review')
-const ReviewVote = require('../ReviewVote')
+const Portal = require('../../../../source/server/data/dao/Portal')
+const Member = require('../../../../source/server/data/dao/Member')
+const Article = require('../../../../source/server/data/dao/Article')
+const Review = require('../../../../source/server/data/dao/Review')
+const ReviewVote = require('../../../../source/server/data/dao/ReviewVote')
+
 const portals = require('./fixtures/portals')
 const members = require('./fixtures/members')
 const articles = require('./fixtures/articles')

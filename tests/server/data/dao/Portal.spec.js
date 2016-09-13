@@ -1,6 +1,7 @@
 require('./helpers/common').chai.should()
 
-const Portal = require('../Portal')
+const Portal = require('../../../../source/server/data/dao/Portal')
+
 const portals = require('./fixtures/portals')
 
 describe('#create()', () => {
