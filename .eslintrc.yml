@@ -8,6 +8,10 @@ rules:
   semi:
     - error
     - never
+  no-use-before-define:
+    - error
+    - functions: false
+      classes: true
   import/no-extraneous-dependencies:
     - error
     - devDependencies: true
