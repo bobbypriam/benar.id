@@ -13,6 +13,7 @@ const feedbacks = require('./fixtures/feedbacks')
 
 let articleId
 let memberId
+let memberSlug
 let feedbackId
 
 beforeEach(() =>
@@ -22,6 +23,7 @@ beforeEach(() =>
   ])
     .then(result => {
       memberId = result[1].id
+      memberSlug = result[1].name_slug
       return Article.create(Object.assign({}, articles.valid[0], {
         portal_id: result[0].id,
         member_id: result[1].id,
@@ -40,7 +42,7 @@ beforeEach(() =>
       // Create feedback
       Article.writeReviewFeedback(
         articleId,
-        members.valid[0].name_slug,
+        memberSlug,
         Object.assign({}, feedbacks.valid[0], {
           member_id: memberId,
         })

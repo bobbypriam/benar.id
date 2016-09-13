@@ -1,7 +1,14 @@
+const slugify = require('slugify')
+
 const Member = require('../schema/Member')
 
 module.exports.create = function create(memberData) {
-  return Member.query().insert(memberData)
+  return generateSlug(memberData.name)
+    .then(slug =>
+      Member.query().insert(Object.assign({}, memberData, {
+        name_slug: slug,
+      }))
+    )
 }
 
 module.exports.get = function get(slug) {
@@ -30,6 +37,38 @@ module.exports.remove = function remove(id) {
     .where('id', id)
     .del()
 }
+
+// Private functions
+
+function generateSlug(name) {
+  if (!name) {
+    return Promise.reject('Name is required.')
+  }
+  const slug = slugify(name)
+  return Member
+    .query()
+    .where('name_slug', 'like', `${slug}%`)
+    .orderBy('id', 'desc')
+    .limit(1)
+    .then(members => {
+      if (!members[0]) {
+        return slug
+      }
+
+      const slugParts = members[0].name_slug.split('-')
+      const lastPart = Number(slugParts[slugParts.length - 1])
+
+      if (Number.isNaN(lastPart)) {
+        return `${slug}-1`
+      }
+
+      return `${slug}-${lastPart + 1}`
+    })
+}
+
+// Exports for testing
+
+module.exports.generateSlug = generateSlug
 
 // CAUTION: DON'T USE THIS ON APP CODE
 // Helper method for clearing database on tests
