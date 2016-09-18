@@ -7,5 +7,5 @@ function importTest(name, path) {
 }
 
 describe('Handler tests', () => {
-  // Import tests here
+  importTest('getHome', './getHome.spec')
 })
