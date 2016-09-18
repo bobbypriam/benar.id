@@ -1,4 +1,4 @@
-require('./helpers/common').chai.should()
+require('../../helpers/common').chai.should()
 
 const slugify = require('slugify')
 
