@@ -6,14 +6,14 @@ const generateDefaultRequestObject = require('../helpers/generateDefaultRequestO
 
 const getHome = require('../../../source/server/handlers/getHome')
 
-function generateHomeRequestObject() {
+function generateRequestObject() {
   const request = generateDefaultRequestObject()
   request.server.app.assets = { home: { js: '' } }
   return request
 }
 
 it('should call Article.getAll()', () => {
-  const request = generateHomeRequestObject()
+  const request = generateRequestObject()
 
   const Article = request.server.app.models.Article = {
     getAll: Sinon.stub(),
@@ -29,7 +29,7 @@ it('should call Article.getAll()', () => {
 })
 
 it('should render pages/home', () => {
-  const request = generateHomeRequestObject()
+  const request = generateRequestObject()
 
   const Article = request.server.app.models.Article = {
     getAll: Sinon.stub(),
@@ -46,7 +46,7 @@ it('should render pages/home', () => {
 })
 
 it('should pass articles in context', () => {
-  const request = generateHomeRequestObject()
+  const request = generateRequestObject()
   const dummyArticles = [{ foo: 'bar' }]
 
   const Article = request.server.app.models.Article = {
@@ -64,7 +64,7 @@ it('should pass articles in context', () => {
 })
 
 it('should pass user in context if authenticated', () => {
-  const request = generateHomeRequestObject()
+  const request = generateRequestObject()
   const dummyUser = { foo: 'bar' }
 
   request.auth.isAuthenticated = true
