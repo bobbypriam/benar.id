@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+
 require('../helpers/common').chai.should()
 
 const Sinon = require('sinon')
