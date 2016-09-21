@@ -8,4 +8,5 @@ function importTest(name, path) {
 
 describe('Handler tests', () => {
   importTest('getHome', './getHome.spec')
+  importTest('getArticle', './getArticle.spec')
 })
