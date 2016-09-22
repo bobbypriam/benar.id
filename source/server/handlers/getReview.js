@@ -29,7 +29,7 @@ module.exports = (request, reply) => {
             vote => vote.member_id === context.user.id
           ).length > 0
 
-        context.user.haveNotVoted = !context.user.upvoted && !context.user.downvoted
+        context.user.voted = context.user.upvoted || context.user.downvoted
       }
 
       return reply.view('pages/article/review', context)

@@ -34,7 +34,7 @@
     </form>
     {{/if}}
 
-    {{#if user.haveNotVoted}}
+    {{#unless user.voted}}
     <form action="/artikel/{{review.article.id}}/ulasan/{{review.member.name_slug}}/upvote" method="post">
       <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Upvote" />
@@ -43,7 +43,7 @@
       <input type="hidden" name="reviewId" value={{review.id}} />
       <input type="submit" value="Downvote" />
     </form>
-    {{/if}}
+    {{/unless}}
 
   {{/unless}}
 </div>
