@@ -10,31 +10,28 @@ module.exports = (request, reply) => {
     context.user = request.auth.credentials
   }
 
-  Promise.all([
-    Article.get(articleId),
-    Article.getReview(articleId, reviewerSlug),
-  ]).then(results => {
-    context.article = results[0]
-    context.review = results[1]
+  return Article.getReview(articleId, reviewerSlug)
+    .then(review => {
+      context.review = review
 
-    if (context.user) {
-      context.user.ownReview = context.user.id === context.review.member.id
-    }
+      if (context.user) {
+        context.user.ownReview = context.user.id === context.review.member.id
+      }
 
-    if (context.user && !context.user.ownReview) {
-      context.user.upvoted = context.review.upvotes
-        .filter(
-          vote => vote.member_id === context.user.id
-        ).length > 0
+      if (context.user && !context.user.ownReview) {
+        context.user.upvoted = context.review.upvotes
+          .filter(
+            vote => vote.member_id === context.user.id
+          ).length > 0
 
-      context.user.downvoted = context.review.downvotes
-        .filter(
-          vote => vote.member_id === context.user.id
-        ).length > 0
+        context.user.downvoted = context.review.downvotes
+          .filter(
+            vote => vote.member_id === context.user.id
+          ).length > 0
 
-      context.user.haveNotVoted = !context.user.upvoted && !context.user.downvoted
-    }
+        context.user.haveNotVoted = !context.user.upvoted && !context.user.downvoted
+      }
 
-    return reply.view('pages/article/review', context)
-  })
+      return reply.view('pages/article/review', context)
+    })
 }
