@@ -22,4 +22,5 @@ describe('Handler tests', () => {
   importTest('postUpvoteReview', './postUpvoteReview.spec')
   importTest('postDownvoteReview', './postDownvoteReview.spec')
   importTest('postRevokeUpvoteReview', './postRevokeUpvoteReview.spec')
+  importTest('postRevokeDownvoteReview', './postRevokeDownvoteReview.spec')
 })
