@@ -18,4 +18,5 @@ describe('Handler tests', () => {
   importTest('postArticle', './postArticle.spec')
   importTest('postReview', './postReview.spec')
   importTest('postFeedback', './postFeedback.spec')
+  importTest('postFeedbackReply', './postFeedbackReply.spec')
 })
