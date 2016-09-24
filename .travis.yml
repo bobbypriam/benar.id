@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "6"
+services: mysql
+env:
+  global:
+    - MYSQL_HOSTNAME=localhost
+    - MYSQL_USERNAME=root
+    - MYSQL_PASSWORD=
+    - MYSQL_DATABASE=benar
