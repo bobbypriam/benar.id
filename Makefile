@@ -16,6 +16,9 @@ build-containers:
 test:
 	docker-compose run --rm web ./bin/test.sh
 
+unit-test:
+	docker-compose run --rm web npm run test:server:unit
+
 lint:
 	docker-compose run --rm web npm run lint -s
 
