@@ -10,6 +10,9 @@ daemon:
 watch-client:
 	docker-compose run --rm web npm run watch-client
 
+build-client:
+	docker-compose run --rm web npm run build-client
+
 build-containers:
 	docker-compose build
 
