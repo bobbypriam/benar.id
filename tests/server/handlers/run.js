@@ -13,4 +13,5 @@ describe('Handler tests', () => {
   importTest('getLogout', './getLogout.spec')
   importTest('getNewArticle', './getNewArticle.spec')
   importTest('getReview', './getReview.spec')
+  importTest('postLogin', './postLogin.spec')
 })
