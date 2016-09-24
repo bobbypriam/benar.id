@@ -17,4 +17,5 @@ module.exports = (request, reply) => {
 
       return reply.redirect('/')
     })
+    .catch(() => reply.redirect('/masuk'))
 }
