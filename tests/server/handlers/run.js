@@ -15,4 +15,5 @@ describe('Handler tests', () => {
   importTest('getReview', './getReview.spec')
   importTest('postLogin', './postLogin.spec')
   importTest('postSignUp', './postSignUp.spec')
+  importTest('postArticle', './postArticle.spec')
 })
