@@ -27,6 +27,7 @@ before_install:
   - npm install -g elm
 
 before_script:
+  - cp .env.default .env
   - npm run build-client
   - npm run createDb
 
