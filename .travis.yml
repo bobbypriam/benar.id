@@ -10,6 +10,10 @@ env:
     - MYSQL_PASSWORD=
     - MYSQL_DATABASE=benar
 
+cache:
+  directories:
+    - elm-stuff/build-artifacts
+
 before_install:
   - npm install -g elm
 
