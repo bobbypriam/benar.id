@@ -1,6 +1,8 @@
 Benar.ID
 =============
 
+[![Build Status](https://travis-ci.org/bobbypriambodo/benar.id.svg?branch=master)](https://travis-ci.org/bobbypriambodo/benar.id)
+
 Crowdsourced, collaborative Indonesian news rating app.
 
 This is still a work in progress!
