@@ -17,7 +17,7 @@ function deepClone(obj) {
 }
 
 module.exports = {
-  createTestDb() {
+  createDb() {
     const configWithoutDbName = deepClone(config.database)
     delete configWithoutDbName.connection.database
 
@@ -26,7 +26,7 @@ module.exports = {
       .then(() => db.destroy())
   },
 
-  initTestTables() {
+  initTables() {
     return new Promise((resolve, reject) => {
       fs.readFile(schemaFile, 'utf8', (err, sql) => {
         if (err) {
@@ -42,7 +42,7 @@ module.exports = {
     })
   },
 
-  destroyTestDb() {
+  destroyDb() {
     const configWithoutDbName = deepClone(config.database)
     delete configWithoutDbName.connection.database
 
