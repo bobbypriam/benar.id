@@ -3,7 +3,15 @@
 # Enable getting $MYSQL_HOSTNAME variable
 source .env
 
-./bin/wait-for-it.sh $MYSQL_HOSTNAME:3306 --strict -t 100 -- npm test
+export NODE_ENV=test
+
+./bin/wait-for-it.sh $MYSQL_HOSTNAME:3306 --strict -t 100 -- npm run createDb
+
+npm test
+
+test_exit_code=$?
+
+npm run destroyDb
 
 # Pass the exit code to docker-compose
-exit $?
+exit $test_exit_code

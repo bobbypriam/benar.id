@@ -3,10 +3,10 @@ const setup = require('./setup')
 console.log('[Migration Script] Creating database...')
 
 function run() {
-  setup.createTestDb()
+  setup.createDb()
     .then(() => {
       console.log('[Migration Script] Setting up tables...')
-      return setup.initTestTables()
+      return setup.initTables()
     })
     .then(() => {
       console.log('[Migration Script] Database setup done!')

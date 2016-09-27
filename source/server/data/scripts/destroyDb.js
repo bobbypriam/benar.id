@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 console.log('[Database Teardown Script] Detroying database...')
-setup.destroyTestDb()
+setup.destroyDb()
   .then(() => {
     console.log('[Database Teardown Script] Destroy done!')
   })
