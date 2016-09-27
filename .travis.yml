@@ -4,6 +4,7 @@ node_js:
 services: mysql
 env:
   global:
+    - NODE_ENV=test
     - MYSQL_HOSTNAME=localhost
     - MYSQL_USERNAME=root
     - MYSQL_PASSWORD=
@@ -14,3 +15,7 @@ before_install:
 
 before_script:
   - npm run build-client
+  - npm run createDb
+
+after_script:
+  - npm run destroyDb
