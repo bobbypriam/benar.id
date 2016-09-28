@@ -10,6 +10,7 @@ const getArticle = require('../../../source/server/handlers/getArticle')
 
 function generateRequestObject() {
   const request = generateDefaultRequestObject()
+  request.server.app.assets = { 'article-detail': { js: '' } }
   return request
 }
 
