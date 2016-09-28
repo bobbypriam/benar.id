@@ -1,5 +1,5 @@
-const Elm = require('./Home.elm')
+const Elm = require('./ArticleList.elm')
 
-const node = document.getElementById('home')
+const node = document.getElementById('article-list')
 
-Elm.Home.embed(node, window.data)
+Elm.ArticleList.embed(node, window.data)

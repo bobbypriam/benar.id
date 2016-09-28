@@ -1,4 +1,4 @@
-module Home exposing (..)
+module ArticleList exposing (..)
 
 import Html exposing (..)
 import Html.App as App

@@ -1,5 +1,5 @@
-const Elm = require('./ArticleDetail.elm')
+const Elm = require('./ReviewList.elm')
 
-const node = document.getElementById('elm-root')
+const node = document.getElementById('review-list')
 
-Elm.ArticleDetail.embed(node, window.data)
+Elm.ReviewList.embed(node, window.data)
