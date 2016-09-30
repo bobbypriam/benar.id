@@ -1,5 +1,6 @@
 module.exports = (request, reply) => {
   const { Article } = request.server.app.models
+  const { assets } = request.server.app
 
   const articleId = request.params.id
 
@@ -18,6 +19,14 @@ module.exports = (request, reply) => {
           .filter(review =>
             review.member.id === context.user.id
           ).length > 0
+      }
+
+      context.script = {
+        file: assets['article-detail'].js,
+        data: {
+          articleId: article.id,
+          reviews: article.reviews,
+        },
       }
 
       return reply.view('pages/article/detail', context)
