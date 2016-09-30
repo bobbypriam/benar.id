@@ -25,6 +25,9 @@ unit-test:
 lint:
 	docker-compose run --rm web npm run lint -s
 
+cover:
+	docker-compose run --rm web ./bin/cover.sh
+
 stop:
 	docker-compose stop
 
