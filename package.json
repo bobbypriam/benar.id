@@ -17,7 +17,8 @@
     "test:server:integration:dao": "mocha 'tests/server/data/dao/run.js'",
     "createDb": "node source/server/data/scripts/createDb",
     "destroyDb": "node source/server/data/scripts/destroyDb",
-    "cover": "istanbul cover _mocha 'tests/**/run.js'"
+    "cover": "istanbul cover _mocha 'tests/**/run.js'",
+    "coveralls": "npm run cover && istanbul-coveralls"
   },
   "author": "Bobby Priambodo <bobby.priambodo@gmail.com>",
   "license": "AGPL-3.0",
