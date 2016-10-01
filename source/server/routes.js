@@ -16,6 +16,17 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/cari',
+    handler: handlers.getSmartSearch,
+    config: {
+      auth: {
+        mode: 'try',
+        strategy: 'session',
+      },
+    },
+  },
+  {
+    method: 'GET',
     path: '/artikel/{id}',
     handler: handlers.getArticle,
     config: {
