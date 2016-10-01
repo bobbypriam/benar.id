@@ -10,8 +10,11 @@ services:
       - .:/app
     links:
       - mysql
+      - elasticsearch
   mysql:
     image: mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_DATABASE=${MYSQL_DATABASE}
+  elasticsearch:
+    image: elasticsearch
