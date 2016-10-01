@@ -51,18 +51,35 @@ view model =
             p [] [ text "Tidak ada artikel." ]
 
         articles ->
-            ul [] (List.map renderArticle articles)
+            ul [ class "list pa0" ] (List.map renderArticle articles)
 
 
 renderArticle : Article -> Html Msg
 renderArticle article =
     li []
-        [ p []
-            [ a [ href ("/artikel/" ++ (toString article.id)) ] [ strong [] [ text article.title ] ]
+        [ h3 [ class "f3 mb0" ]
+            [ a [ href ("/artikel/" ++ (toString article.id)), class "dim link black-70" ]
+                [ strong [] [ text article.title ] ]
+            ]
+        , div [ class "overview" ]
+            [ div [ class "portal" ]
+                [ a [ href "" ] [ text "Detik.com" ]
+                , text " - "
+                , a [ href article.url, target "_blank" ] [ text "Baca berita" ]
+                ]
+            ]
+        , div [ class "stats" ]
+            [ span [ class "rating" ] [ text "8/10" ]
             , text " - "
-            , a [ href article.url, target "_blank" ] [ text article.url ]
+            , span [ class "review-count" ] [ text "4 Ulasan" ]
             , text " - "
-            , small [] [ text article.date_created ]
+            , span [ class "follower-count" ] [ text "Ikuti (127)" ]
+            ]
+        , div [ class "user" ]
+            [ text "oleh "
+            , a [ href "#" ] [ text "Bobby Priambodo" ]
+            , text " "
+            , text article.date_created
             ]
         ]
 
