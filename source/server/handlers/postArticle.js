@@ -1,6 +1,7 @@
 module.exports = (request, reply) => {
   const memberData = request.auth.credentials
   const { Article } = request.server.app.models
+  const { elasticsearch } = request.server.app.lib
   const article = request.payload
   article.member_id = memberData.id
 
@@ -8,6 +9,12 @@ module.exports = (request, reply) => {
   article.url = stripQueryString(article.url)
 
   return Article.create(article)
+    .then(createdArticle => elasticsearch.index({
+      index: 'benar',
+      type: 'article',
+      id: createdArticle.id,
+      body: createdArticle,
+    }))
     .then(() => reply.redirect('/'))
     .catch(err => {
       request.log(['database', 'error'], err)
