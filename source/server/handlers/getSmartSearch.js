@@ -20,6 +20,14 @@ module.exports = (request, reply) => {
 
   return elasticsearch.search(searchQuery)
     .then(result => {
+      if (isUrl(q)) {
+        const normalizedUrl = stripQueryString(q)
+        const article = result.hits.hits.find(hit => hit._source.url === normalizedUrl)
+
+        if (article) {
+          return reply.redirect(`/artikel/${article._source.id}`)
+        }
+      }
       const response =
         `<p>Searching: ${q}</p>
         <ul>
@@ -32,7 +40,7 @@ module.exports = (request, reply) => {
           )}
         </ul>`
 
-      reply(response)
+      return reply(response)
     })
     .catch(err => {
       reply(err)
