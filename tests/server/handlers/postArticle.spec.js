@@ -13,6 +13,11 @@ function generateRequestObject() {
   return request
 }
 
+const dummyArticle = {
+  title: 'Example Title',
+  url: 'http://example.com',
+}
+
 const dummyUser = {
   id: 1,
   name_slug: 'foo',
@@ -21,7 +26,7 @@ const dummyUser = {
 it('should call Article.create(article)', () => {
   const request = generateRequestObject()
 
-  request.payload = { foo: 'bar' }
+  request.payload = Object.assign({}, dummyArticle)
   request.auth.credentials = dummyUser
 
   const Article = request.server.app.models.Article = {
@@ -40,10 +45,35 @@ it('should call Article.create(article)', () => {
     })
 })
 
+it('should strip query string from article payload', () => {
+  const request = generateRequestObject()
+
+  request.payload = Object.assign({}, dummyArticle, {
+    url: `${dummyArticle.url}?foo=bar`,
+  })
+  request.auth.credentials = dummyUser
+
+  const Article = request.server.app.models.Article = {
+    create: Sinon.stub(),
+  }
+  Article.create.returns(Promise.resolve())
+
+  const reply = { redirect: Sinon.spy() }
+
+  return postArticle(request, reply)
+    .then(() => {
+      Sinon.assert.calledOnce(Article.create)
+      Sinon.assert.calledWith(Article.create, Object.assign({}, request.payload, {
+        member_id: request.auth.credentials.id,
+        url: dummyArticle.url,
+      }))
+    })
+})
+
 it('should redirect to home if success', () => {
   const request = generateRequestObject()
 
-  request.payload = { foo: 'bar' }
+  request.payload = Object.assign({}, dummyArticle)
   request.auth.credentials = dummyUser
 
   const Article = request.server.app.models.Article = {
@@ -63,7 +93,7 @@ it('should redirect to home if success', () => {
 it('should redirect to /artikel/baru if promise is rejected', () => {
   const request = generateRequestObject()
 
-  request.payload = { foo: 'bar' }
+  request.payload = Object.assign({}, dummyArticle)
   request.auth.credentials = dummyUser
   request.log = Sinon.spy()
 
