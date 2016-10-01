@@ -8,11 +8,6 @@ const generateDefaultRequestObject = require('../helpers/generateDefaultRequestO
 
 const postArticle = require('../../../source/server/handlers/postArticle')
 
-function generateRequestObject() {
-  const request = generateDefaultRequestObject()
-  return request
-}
-
 const dummyArticle = {
   title: 'Example Title',
   url: 'http://example.com',
@@ -23,16 +18,27 @@ const dummyUser = {
   name_slug: 'foo',
 }
 
+function generateRequestObject() {
+  const request = generateDefaultRequestObject()
+  request.payload = Object.assign({}, dummyArticle)
+  request.auth.credentials = dummyUser
+  request.server.app.models.Article = {
+    create: Sinon.stub(),
+  }
+  request.server.app.lib.elasticsearch = {
+    index: Sinon.stub(),
+  }
+  request.log = Sinon.spy()
+  return request
+}
+
 it('should call Article.create(article)', () => {
   const request = generateRequestObject()
 
-  request.payload = Object.assign({}, dummyArticle)
-  request.auth.credentials = dummyUser
-
-  const Article = request.server.app.models.Article = {
-    create: Sinon.stub(),
-  }
-  Article.create.returns(Promise.resolve())
+  const Article = request.server.app.models.Article
+  Article.create.returns(Promise.resolve(dummyArticle))
+  const elasticsearch = request.server.app.lib.elasticsearch
+  elasticsearch.index.returns(Promise.resolve())
 
   const reply = { redirect: Sinon.spy() }
 
@@ -51,12 +57,11 @@ it('should strip query string from article payload', () => {
   request.payload = Object.assign({}, dummyArticle, {
     url: `${dummyArticle.url}?foo=bar`,
   })
-  request.auth.credentials = dummyUser
 
-  const Article = request.server.app.models.Article = {
-    create: Sinon.stub(),
-  }
-  Article.create.returns(Promise.resolve())
+  const Article = request.server.app.models.Article
+  Article.create.returns(Promise.resolve(dummyArticle))
+  const elasticsearch = request.server.app.lib.elasticsearch
+  elasticsearch.index.returns(Promise.resolve())
 
   const reply = { redirect: Sinon.spy() }
 
@@ -70,16 +75,30 @@ it('should strip query string from article payload', () => {
     })
 })
 
+it('should call elasticsearch.index(obj)', () => {
+  const request = generateRequestObject()
+
+  const Article = request.server.app.models.Article
+  Article.create.returns(Promise.resolve(dummyArticle))
+  const elasticsearch = request.server.app.lib.elasticsearch
+  elasticsearch.index.returns(Promise.resolve())
+
+  const reply = { redirect: Sinon.spy() }
+
+  return postArticle(request, reply)
+    .then(() => {
+      Sinon.assert.calledOnce(elasticsearch.index)
+      Sinon.assert.calledWith(elasticsearch.index, Sinon.match.hasOwn('body', dummyArticle))
+    })
+})
+
 it('should redirect to home if success', () => {
   const request = generateRequestObject()
 
-  request.payload = Object.assign({}, dummyArticle)
-  request.auth.credentials = dummyUser
-
-  const Article = request.server.app.models.Article = {
-    create: Sinon.stub(),
-  }
-  Article.create.returns(Promise.resolve())
+  const Article = request.server.app.models.Article
+  Article.create.returns(Promise.resolve(dummyArticle))
+  const elasticsearch = request.server.app.lib.elasticsearch
+  elasticsearch.index.returns(Promise.resolve())
 
   const reply = { redirect: Sinon.spy() }
 
@@ -93,13 +112,7 @@ it('should redirect to home if success', () => {
 it('should redirect to /artikel/baru if promise is rejected', () => {
   const request = generateRequestObject()
 
-  request.payload = Object.assign({}, dummyArticle)
-  request.auth.credentials = dummyUser
-  request.log = Sinon.spy()
-
-  const Article = request.server.app.models.Article = {
-    create: Sinon.stub(),
-  }
+  const Article = request.server.app.models.Article
   Article.create.returns(Promise.reject())
 
   const reply = { redirect: Sinon.spy() }

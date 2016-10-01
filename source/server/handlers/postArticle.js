@@ -11,7 +11,7 @@ module.exports = (request, reply) => {
   return Article.create(article)
     .then(createdArticle => elasticsearch.index({
       index: 'benar',
-      type: 'article',
+      type: 'articles',
       id: createdArticle.id,
       body: createdArticle,
     }))
