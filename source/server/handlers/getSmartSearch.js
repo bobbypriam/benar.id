@@ -3,6 +3,7 @@ const url = require('url')
 module.exports = (request, reply) => {
   const { elasticsearch } = request.server.app.lib
   const { q } = request.query
+  const authenticated = request.auth.isAuthenticated
 
   const searchQuery = {
     index: 'benar',
@@ -26,7 +27,10 @@ module.exports = (request, reply) => {
 
         if (article) {
           return reply.redirect(`/artikel/${article._source.id}`)
+        } else if (authenticated) {
+          return reply.redirect('/artikel/baru')
         }
+        return reply('Artikel tidak ditemukan.')
       }
       const response =
         `<p>Searching: ${q}</p>
