@@ -6,7 +6,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: handlers.getHome,
+    handler: require('./handlers/home/get/view'),
     config: {
       auth: {
         mode: 'try',
@@ -54,7 +54,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/masuk',
-    handler: handlers.getLogin,
+    handler: require('./handlers/login/get/view'),
     config: {
       auth: {
         mode: 'try',
@@ -65,7 +65,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/masuk',
-    handler: handlers.postLogin,
+    handler: require('./handlers/login/post/view'),
     config: {
       validate: {
         payload: {
@@ -90,7 +90,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/keluar',
-    handler: handlers.getLogout,
+    handler: require('./handlers/logout/get/view'),
     config: {
       auth: {
         mode: 'try',

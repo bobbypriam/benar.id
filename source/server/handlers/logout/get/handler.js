@@ -1,7 +1,6 @@
-module.exports = (request, reply) => {
+module.exports = (request) => {
   if (request.auth.isAuthenticated) {
     request.cookieAuth.clear()
   }
-
-  return reply.redirect('/')
+  return Promise.resolve()
 }
