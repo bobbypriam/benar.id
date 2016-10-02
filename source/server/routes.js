@@ -28,7 +28,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}',
-    handler: handlers.getArticle,
+    handler: require('./handlers/articles/detail/_get/view'),
     config: {
       auth: {
         mode: 'try',
@@ -105,7 +105,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/baru',
-    handler: handlers.getNewArticle,
+    handler: require('./handlers/articles/new/_get/view'),
     config: {
       auth: 'session',
     },
@@ -113,7 +113,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel',
-    handler: handlers.postArticle,
+    handler: require('./handlers/articles/_post/view'),
     config: {
       auth: 'session',
       validate: {

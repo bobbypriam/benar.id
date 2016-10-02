@@ -20,4 +20,12 @@
   {{/if}}
 {{/if}}
 
-<div id="review-list"></div>
+<ul>
+  {{#each article.reviews}}
+  <li>
+    <a href="/artikel/{{../article.id}}/ulasan/{{member.name_slug}}">
+      {{member.name}} - {{rating}}/10 - {{content}}
+    </a>
+  </li>
+  {{/each}}
+</ul>

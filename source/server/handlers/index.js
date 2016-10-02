@@ -1,8 +1,5 @@
-module.exports.getArticle = require('./getArticle')
-module.exports.getNewArticle = require('./getNewArticle')
 module.exports.getReview = require('./getReview')
 module.exports.getSmartSearch = require('./getSmartSearch')
-module.exports.postArticle = require('./postArticle')
 module.exports.postFeedback = require('./postFeedback')
 module.exports.postFeedbackReply = require('./postFeedbackReply')
 module.exports.postReview = require('./postReview')
