@@ -1,9 +1,22 @@
 const url = require('url')
 
 module.exports = (request, reply) => {
+  const { assets } = request.server.app
   const { elasticsearch } = request.server.app.lib
   const { q } = request.query
   const authenticated = request.auth.isAuthenticated
+
+  if (!q) {
+    return reply.redirect('/')
+  }
+
+  const context = {}
+
+  context.query = q
+
+  if (authenticated) {
+    context.user = request.auth.credentials
+  }
 
   const searchQuery = {
     index: 'benar',
@@ -32,19 +45,17 @@ module.exports = (request, reply) => {
         }
         return reply('Artikel tidak ditemukan.')
       }
-      const response =
-        `<p>Searching: ${q}</p>
-        <ul>
-          ${result.hits.hits.map(hit =>
-            `<li>
-              <p>${hit._source.title}</p>
-              <p>${hit._source.url}</p>
-              <p>${hit._score}</p>
-            </li>`
-          )}
-        </ul>`
 
-      return reply(response)
+      context.hits = result.hits.hits.map(hit => Object.assign({}, hit._source, {
+        score: hit._score,
+      }))
+
+      context.script = {
+        file: assets.home.js,
+        data: { articles: context.hits },
+      }
+
+      return reply.view('pages/search', context)
     })
     .catch(err => {
       reply(err)
