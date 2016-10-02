@@ -1,8 +1,6 @@
-module.exports.getReview = require('./getReview')
 module.exports.getSmartSearch = require('./getSmartSearch')
 module.exports.postFeedback = require('./postFeedback')
 module.exports.postFeedbackReply = require('./postFeedbackReply')
-module.exports.postReview = require('./postReview')
 module.exports.postUpvoteReview = require('./postUpvoteReview')
 module.exports.postRevokeUpvoteReview = require('./postRevokeUpvoteReview')
 module.exports.postDownvoteReview = require('./postDownvoteReview')

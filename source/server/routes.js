@@ -39,7 +39,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}/ulasan/{reviewerSlug}',
-    handler: handlers.getReview,
+    handler: require('./handlers/articles/reviews/detail/_get/view'),
     config: {
       auth: {
         mode: 'try',
@@ -127,7 +127,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan',
-    handler: handlers.postReview,
+    handler: require('./handlers/articles/reviews/_post/view'),
     config: {
       auth: 'session',
       validate: {
