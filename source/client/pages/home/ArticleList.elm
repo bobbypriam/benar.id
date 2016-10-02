@@ -31,7 +31,6 @@ type alias Article =
     { id : Int
     , title : String
     , url : String
-    , date_created : String
     }
 
 
@@ -79,7 +78,8 @@ renderArticle article =
             [ text "oleh "
             , a [ href "#" ] [ text "Bobby Priambodo" ]
             , text " "
-            , text article.date_created
+              -- , text article.date_created
+            , text "(3 hours ago)"
             ]
         ]
 

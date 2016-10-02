@@ -10,6 +10,8 @@ const manifest = require('./manifest')
 
 const dao = require('./data/dao')
 
+const lib = require('./lib')
+
 const assets = require('../../webpack-assets.json')
 
 const options = {
@@ -33,6 +35,7 @@ function initializeServer(server) {
   server.app.models = dao // eslint-disable-line
 
   server.app.assets = assets //eslint-disable-line
+  server.app.lib = lib //eslint-disable-line
 
   server.auth.strategy('session', 'cookie', {
     password: process.env.COOKIE_PASSWORD,

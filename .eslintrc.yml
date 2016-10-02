@@ -12,6 +12,7 @@ rules:
     - error
     - functions: false
       classes: true
+  no-underscore-dangle: off
   import/no-extraneous-dependencies:
     - error
     - devDependencies: true
