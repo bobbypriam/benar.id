@@ -143,7 +143,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/upvote',
-    handler: handlers.postUpvoteReview,
+    handler: require('./handlers/articles/reviews/vote/_post/view')('upvote'),
     config: {
       auth: 'session',
       validate: {
@@ -156,7 +156,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-upvote',
-    handler: handlers.postRevokeUpvoteReview,
+    handler: require('./handlers/articles/reviews/vote/_post/view')('revokeUpvote'),
     config: {
       auth: 'session',
       validate: {
@@ -169,7 +169,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/downvote',
-    handler: handlers.postDownvoteReview,
+    handler: require('./handlers/articles/reviews/vote/_post/view')('downvote'),
     config: {
       auth: 'session',
       validate: {
@@ -182,7 +182,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-downvote',
-    handler: handlers.postRevokeDownvoteReview,
+    handler: require('./handlers/articles/reviews/vote/_post/view')('revokeDownvote'),
     config: {
       auth: 'session',
       validate: {
