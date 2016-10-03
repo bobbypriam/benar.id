@@ -5,5 +5,5 @@ module.exports = (request, reply) =>
     .then(() => reply.redirect('/'))
     .catch(err => {
       request.log(['error'], err)
-      request.redirect('/masuk')
+      return reply.redirect('/masuk')
     })
