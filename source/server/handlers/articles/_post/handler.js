@@ -6,12 +6,15 @@ module.exports.handleRequest = (request) => {
   article.member_id = memberData.id
   article.url = stripQueryString(article.url)
   return Article.create(article)
-    .then(createdArticle => elasticsearch.index({
-      index: 'benar',
-      type: 'articles',
-      id: createdArticle.id,
-      body: createdArticle,
-    }))
+    .then(createdArticle => {
+      elasticsearch.index({
+        index: 'benar',
+        type: 'articles',
+        id: createdArticle.id,
+        body: createdArticle,
+      })
+      return { articleId: createdArticle.id }
+    })
 }
 
 function stripQueryString(url) {
