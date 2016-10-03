@@ -1,7 +1,5 @@
 const Joi = require('joi')
 
-const handlers = require('./handlers')
-
 module.exports = [
   {
     method: 'GET',
@@ -17,7 +15,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/cari',
-    handler: handlers.getSmartSearch,
+    handler: require('./handlers/search/_get/view'),
     config: {
       auth: {
         mode: 'try',
