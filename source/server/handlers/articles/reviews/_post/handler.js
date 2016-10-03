@@ -5,4 +5,5 @@ module.exports.handleRequest = (request) => {
   const articleId = request.params.id
   review.member_id = memberData.id
   return Article.writeReview(articleId, review)
+    .then(createdReview => ({ review: createdReview }))
 }
