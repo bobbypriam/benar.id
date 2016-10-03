@@ -1,10 +1,12 @@
 const Joi = require('joi')
 
+const handlers = require('./handlers')
+
 module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: require('./handlers/home/_get/view'),
+    handler: handlers.home._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -15,7 +17,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/cari',
-    handler: require('./handlers/search/_get/view'),
+    handler: handlers.search._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -26,7 +28,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}',
-    handler: require('./handlers/articles/detail/_get/view'),
+    handler: handlers.articles.detail._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -37,7 +39,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}/ulasan/{reviewerSlug}',
-    handler: require('./handlers/articles/reviews/detail/_get/view'),
+    handler: handlers.articles.reviews.detail._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -52,7 +54,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/masuk',
-    handler: require('./handlers/login/_get/view'),
+    handler: handlers.login._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -63,7 +65,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/masuk',
-    handler: require('./handlers/login/_post/view'),
+    handler: handlers.login._post.view,
     config: {
       validate: {
         payload: {
@@ -75,7 +77,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/gabung',
-    handler: require('./handlers/signup/_post/view'),
+    handler: handlers.signup._post.view,
     config: {
       validate: {
         payload: {
@@ -88,7 +90,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/keluar',
-    handler: require('./handlers/logout/_get/view'),
+    handler: handlers.logout._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -103,7 +105,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/baru',
-    handler: require('./handlers/articles/new/_get/view'),
+    handler: handlers.articles.new._get.view,
     config: {
       auth: 'session',
     },
@@ -111,7 +113,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel',
-    handler: require('./handlers/articles/_post/view'),
+    handler: handlers.articles._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -125,7 +127,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan',
-    handler: require('./handlers/articles/reviews/_post/view'),
+    handler: handlers.articles.reviews._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -141,7 +143,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/upvote',
-    handler: require('./handlers/articles/reviews/vote/_post/view')('upvote'),
+    handler: handlers.articles.reviews.vote._post.view('upvote'),
     config: {
       auth: 'session',
       validate: {
@@ -154,7 +156,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-upvote',
-    handler: require('./handlers/articles/reviews/vote/_post/view')('revokeUpvote'),
+    handler: handlers.articles.reviews.vote._post.view('revokeUpvote'),
     config: {
       auth: 'session',
       validate: {
@@ -167,7 +169,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/downvote',
-    handler: require('./handlers/articles/reviews/vote/_post/view')('downvote'),
+    handler: handlers.articles.reviews.vote._post.view('downvote'),
     config: {
       auth: 'session',
       validate: {
@@ -180,7 +182,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-downvote',
-    handler: require('./handlers/articles/reviews/vote/_post/view')('revokeDownvote'),
+    handler: handlers.articles.reviews.vote._post.view('revokeDownvote'),
     config: {
       auth: 'session',
       validate: {
@@ -193,7 +195,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
-    handler: require('./handlers/articles/reviews/feedbacks/_post/view'),
+    handler: handlers.articles.reviews.feedbacks._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -206,7 +208,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback/{parentFeedbackId}/reply',
-    handler: require('./handlers/articles/reviews/feedbacks/replies/_post/view'),
+    handler: handlers.articles.reviews.feedbacks.replies._post.view,
     config: {
       auth: 'session',
       validate: {
