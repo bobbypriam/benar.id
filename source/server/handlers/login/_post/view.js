@@ -1,7 +1,7 @@
-const handleRequest = require('./handler')
+const handler = require('./handler')
 
 module.exports = (request, reply) =>
-  handleRequest(request)
+  handler.handleRequest(request)
     .then(() => reply.redirect('/'))
     .catch(err => {
       request.log(['error'], err)

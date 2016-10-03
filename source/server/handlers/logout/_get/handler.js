@@ -1,4 +1,4 @@
-module.exports = (request) => {
+module.exports.handleRequest = (request) => {
   if (request.auth.isAuthenticated) {
     request.cookieAuth.clear()
   }

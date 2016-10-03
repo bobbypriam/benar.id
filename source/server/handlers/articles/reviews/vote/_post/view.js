@@ -1,7 +1,7 @@
-const handleRequest = require('./handler')
+const handler = require('./handler')
 
 module.exports = method => (request, reply) =>
-  handleRequest(method)(request)
+  handler.handleRequest(method)(request)
     .then(() => reply.redirect(
       `/artikel/${request.params.id}/ulasan/${request.params.reviewerSlug}`
     ))

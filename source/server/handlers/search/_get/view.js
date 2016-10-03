@@ -1,7 +1,7 @@
-const handleRequest = require('./handler')
+const handler = require('./handler')
 
 module.exports = (request, reply) =>
-  handleRequest(request)
+  handler.handleRequest(request)
     .then(data => {
       if (!data.query) {
         return reply.redirect('/')

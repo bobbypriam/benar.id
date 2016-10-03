@@ -1,4 +1,4 @@
-module.exports = (request) => {
+module.exports.handleRequest = (request) => {
   const memberData = request.auth.credentials
   const { Article } = request.server.app.models
   const { elasticsearch } = request.server.app.lib

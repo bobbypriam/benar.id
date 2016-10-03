@@ -1,6 +1,6 @@
 const url = require('url')
 
-module.exports = (request) => {
+module.exports.handleRequest = (request) => {
   const { elasticsearch } = request.server.app.lib
   const { q } = request.query
 

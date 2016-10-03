@@ -1,4 +1,4 @@
-module.exports = (request) => {
+module.exports.handleRequest = (request) => {
   const { Member } = request.server.app.models
   const { name, email } = request.payload
   const memberData = {

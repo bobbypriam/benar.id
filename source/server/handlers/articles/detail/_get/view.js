@@ -1,7 +1,7 @@
-const handleRequest = require('./handler')
+const handler = require('./handler')
 
 module.exports = (request, reply) =>
-  handleRequest(request)
+  handler.handleRequest(request)
     .then(data => {
       const context = {}
       context.article = data.article

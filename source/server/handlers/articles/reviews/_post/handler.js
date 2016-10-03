@@ -1,4 +1,4 @@
-module.exports = (request) => {
+module.exports.handleRequest = (request) => {
   const { Article } = request.server.app.models
   const memberData = request.auth.credentials
   const review = request.payload

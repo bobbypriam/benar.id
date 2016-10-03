@@ -1,7 +1,7 @@
-const handleRequest = require('./handler')
+const handler = require('./handler')
 
 module.exports = (request, reply) =>
-  handleRequest(request)
+  handler.handleRequest(request)
     .then(() => reply.redirect(`/artikel/${request.params.id}`))
     .catch(err => {
       request.log(['database', 'error'], err)
