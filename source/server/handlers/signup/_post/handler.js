@@ -1,21 +1,16 @@
-module.exports = (request, reply) => {
+module.exports = (request) => {
   const { Member } = request.server.app.models
-
   const { name, email } = request.payload
-
   const memberData = {
     name,
     email,
   }
-
   return Member.create(memberData)
     .then(member => {
       request.cookieAuth.set({
         id: member.id,
         slug: member.name_slug,
       })
-
-      return reply.redirect('/')
+      return { member }
     })
-    .catch(() => reply.redirect('/masuk'))
 }

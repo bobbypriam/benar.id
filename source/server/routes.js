@@ -77,7 +77,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/gabung',
-    handler: handlers.postSignUp,
+    handler: require('./handlers/signup/_post/view'),
     config: {
       validate: {
         payload: {
