@@ -30,7 +30,7 @@ describe('Post Login View', () => {
       })
   })
 
-  it('should redirect to home if rejected', () => {
+  it('should redirect to /masuk if rejected', () => {
     const request = generateRequestObject()
     const stub = sinon.stub(handler, 'handleRequest').returns(Promise.reject())
     const reply = { redirect: sinon.spy() }
