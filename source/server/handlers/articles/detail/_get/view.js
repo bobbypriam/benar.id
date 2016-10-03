@@ -14,4 +14,7 @@ module.exports = (request, reply) =>
       }
       return reply.view('pages/article/detail', context)
     })
-    .catch(() => reply('Not found.'))
+    .catch(err => {
+      request.log(['error'], err)
+      return reply('There\'s something wrong.')
+    })
