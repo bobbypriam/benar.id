@@ -195,7 +195,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
-    handler: handlers.postFeedback,
+    handler: require('./handlers/articles/reviews/feedbacks/_post/view'),
     config: {
       auth: 'session',
       validate: {
@@ -208,7 +208,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback/{parentFeedbackId}/reply',
-    handler: handlers.postFeedbackReply,
+    handler: require('./handlers/articles/reviews/feedbacks/replies/_post/view'),
     config: {
       auth: 'session',
       validate: {
