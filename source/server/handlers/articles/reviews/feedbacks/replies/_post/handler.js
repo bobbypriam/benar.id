@@ -5,4 +5,5 @@ module.exports.handleRequest = (request) => {
   const parentFeedbackId = request.params.parentFeedbackId
   feedback.member_id = memberData.id
   return Feedback.writeReply(parentFeedbackId, feedback)
+    .then(createdFeedback => ({ feedback: createdFeedback }))
 }

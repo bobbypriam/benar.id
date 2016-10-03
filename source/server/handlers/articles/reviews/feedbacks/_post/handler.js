@@ -6,4 +6,5 @@ module.exports.handleRequest = (request) => {
   const reviewerSlug = request.params.reviewerSlug
   feedback.member_id = memberData.id
   return Article.writeReviewFeedback(articleId, reviewerSlug, feedback)
+    .then(createdFeedback => ({ feedback: createdFeedback }))
 }
