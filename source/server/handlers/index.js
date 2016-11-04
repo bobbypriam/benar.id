@@ -1,17 +1,5 @@
-module.exports.getArticle = require('./getArticle')
-module.exports.getHome = require('./getHome')
-module.exports.getLogin = require('./getLogin')
-module.exports.getLogout = require('./getLogout')
-module.exports.getNewArticle = require('./getNewArticle')
-module.exports.getReview = require('./getReview')
-module.exports.getSmartSearch = require('./getSmartSearch')
-module.exports.postArticle = require('./postArticle')
-module.exports.postFeedback = require('./postFeedback')
-module.exports.postFeedbackReply = require('./postFeedbackReply')
-module.exports.postLogin = require('./postLogin')
-module.exports.postReview = require('./postReview')
-module.exports.postUpvoteReview = require('./postUpvoteReview')
-module.exports.postRevokeUpvoteReview = require('./postRevokeUpvoteReview')
-module.exports.postDownvoteReview = require('./postDownvoteReview')
-module.exports.postRevokeDownvoteReview = require('./postRevokeDownvoteReview')
-module.exports.postSignUp = require('./postSignUp')
+const requireDirectory = require('require-directory')
+
+module.exports = requireDirectory(module, {
+  include: /(view|api)\.js/,
+})

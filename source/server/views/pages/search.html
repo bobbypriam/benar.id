@@ -1,3 +1,13 @@
 <p>Hits: {{hits.length}}</p>
 
-<div id="article-list"></div>
+<div id="article-list">
+  <ul class="list pa0">
+    {{#each articles}}
+    <li>
+      <h3 class="f4 mb0">
+        <a href="/artikel/{{id}}" class="dim link black-70">{{title}}</a>
+      </h3>
+    </li>
+    {{/each}}
+  </ul>
+</div>

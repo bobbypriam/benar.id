@@ -6,7 +6,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/',
-    handler: handlers.getHome,
+    handler: handlers.home._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -17,7 +17,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/cari',
-    handler: handlers.getSmartSearch,
+    handler: handlers.search._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -28,7 +28,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}',
-    handler: handlers.getArticle,
+    handler: handlers.articles.detail._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -39,7 +39,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/{id}/ulasan/{reviewerSlug}',
-    handler: handlers.getReview,
+    handler: handlers.articles.reviews.detail._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -54,7 +54,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/masuk',
-    handler: handlers.getLogin,
+    handler: handlers.login._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -65,7 +65,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/masuk',
-    handler: handlers.postLogin,
+    handler: handlers.login._post.view,
     config: {
       validate: {
         payload: {
@@ -77,7 +77,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/gabung',
-    handler: handlers.postSignUp,
+    handler: handlers.signup._post.view,
     config: {
       validate: {
         payload: {
@@ -90,7 +90,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/keluar',
-    handler: handlers.getLogout,
+    handler: handlers.logout._get.view,
     config: {
       auth: {
         mode: 'try',
@@ -105,7 +105,7 @@ module.exports = [
   {
     method: 'GET',
     path: '/artikel/baru',
-    handler: handlers.getNewArticle,
+    handler: handlers.articles.new._get.view,
     config: {
       auth: 'session',
     },
@@ -113,7 +113,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel',
-    handler: handlers.postArticle,
+    handler: handlers.articles._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -127,7 +127,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan',
-    handler: handlers.postReview,
+    handler: handlers.articles.reviews._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -143,7 +143,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/upvote',
-    handler: handlers.postUpvoteReview,
+    handler: handlers.articles.reviews.vote._post.view('upvote'),
     config: {
       auth: 'session',
       validate: {
@@ -156,7 +156,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-upvote',
-    handler: handlers.postRevokeUpvoteReview,
+    handler: handlers.articles.reviews.vote._post.view('revokeUpvote'),
     config: {
       auth: 'session',
       validate: {
@@ -169,7 +169,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/downvote',
-    handler: handlers.postDownvoteReview,
+    handler: handlers.articles.reviews.vote._post.view('downvote'),
     config: {
       auth: 'session',
       validate: {
@@ -182,7 +182,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/revoke-downvote',
-    handler: handlers.postRevokeDownvoteReview,
+    handler: handlers.articles.reviews.vote._post.view('revokeDownvote'),
     config: {
       auth: 'session',
       validate: {
@@ -195,7 +195,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback',
-    handler: handlers.postFeedback,
+    handler: handlers.articles.reviews.feedbacks._post.view,
     config: {
       auth: 'session',
       validate: {
@@ -208,7 +208,7 @@ module.exports = [
   {
     method: 'POST',
     path: '/artikel/{id}/ulasan/{reviewerSlug}/feedback/{parentFeedbackId}/reply',
-    handler: handlers.postFeedbackReply,
+    handler: handlers.articles.reviews.feedbacks.replies._post.view,
     config: {
       auth: 'session',
       validate: {
