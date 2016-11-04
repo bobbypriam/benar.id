@@ -1,6 +1,7 @@
 {
   "ignore": [
     "source/client/*",
+    "source/server/**/__test__/*",
 
     "dist/*",
     "*.elm-build.js",

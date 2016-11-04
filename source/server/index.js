@@ -12,7 +12,7 @@ const dao = require('./data/dao')
 
 const lib = require('./lib')
 
-const assets = require('../../webpack-assets.json')
+// const assets = require('../../webpack-assets.json')
 
 const options = {
   relativeTo: Path.resolve(__dirname),
@@ -34,7 +34,7 @@ function initializeServer(server) {
   // through request.server.app.models
   server.app.models = dao // eslint-disable-line
 
-  server.app.assets = assets //eslint-disable-line
+  // server.app.assets = assets //eslint-disable-line
   server.app.lib = lib //eslint-disable-line
 
   server.auth.strategy('session', 'cookie', {
