@@ -4,6 +4,8 @@ Benar.ID
 [![Build Status](https://travis-ci.org/bobbypriambodo/benar.id.svg?branch=master)](https://travis-ci.org/bobbypriambodo/benar.id)
 [![Coverage Status](https://coveralls.io/repos/github/bobbypriambodo/benar.id/badge.svg?branch=master)](https://coveralls.io/github/bobbypriambodo/benar.id?branch=master)
 
+**DEPRECATED: This repo will not be used anymore.**
+
 Crowdsourced, collaborative Indonesian news rating app.
 
 This is still a work in progress!
